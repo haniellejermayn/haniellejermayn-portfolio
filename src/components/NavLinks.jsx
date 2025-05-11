@@ -32,10 +32,10 @@ const NavLinks = ({ containerStyles }) => {
           <Link href={link.path} key={index}>
             {link.name}
           </Link>
-        )
+        );
       })}
     </ul>
-  )
+  );
 };
 
 export default NavLinks;

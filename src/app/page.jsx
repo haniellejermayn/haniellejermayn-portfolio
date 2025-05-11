@@ -7,7 +7,7 @@ const page = () => {
         Lorem, ipsum.
       </h1>
     </div>
-  )
+  );
 };
 
 export default page;

@@ -6,7 +6,7 @@ const MainNav = () => {
     <nav>
       <NavLinks containerStyles="flex flex-col gap-6" />
     </nav>
-  )
-}
-;
+  );
+};
+
 export default MainNav;
