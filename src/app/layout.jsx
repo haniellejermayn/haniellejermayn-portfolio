@@ -21,9 +21,9 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${sometypeMono.variable} antialiased`}>
         <div className="flex">
-          <nav className="main-nav">
+          <div className="main-nav">
             <MainNav />
-          </nav>
+          </div>
           <main className="content-wrapper">
             <header>header</header>
             <section className="page-content">{children}</section>
