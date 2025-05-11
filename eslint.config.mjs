@@ -18,7 +18,8 @@ const eslintConfig = [
     rules: {
       "semi": ["error", "always"],  // Enforce semicolons at the end of statements
       "indent": ["error", 2],       // Enforce 2 spaces for indentation
-      "quotes": ["error", "double"] // Enforce double quotes
+      "quotes": ["error", "double"], // Enforce double quotes
+      "prettier/prettier": ["error"],  // Enable Prettier's rules (from eslint-plugin-prettier)
     },
   },
   {
@@ -28,6 +29,10 @@ const eslintConfig = [
       "node_modules/",
       "*.log",
     ],
+  },
+  {
+    // Use Prettier's config to turn off conflicting rules
+    extends: ["plugin:prettier/recommended"], // This automatically uses `eslint-config-prettier` and `eslint-plugin-prettier`
   },
 ];
 
