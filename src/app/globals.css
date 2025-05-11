@@ -80,6 +80,19 @@ body {
 }
 
 /* Navigation Bar */
-.main-nav {
+.nav-wrapper {
   @apply hidden 2xl:flex w-[285px] h-screen bg-secondary;
+}
+
+.link {
+  @apply relative uppercase text-white;
+}
+
+.active-link {
+  @apply after:content-[''] after:block after:absolute after:left-0 after:top-1/2 
+        after:h-[4px] after:bg-accent after:-translate-y-1/2 after:z-0;
+}
+
+.main-nav {
+  @apply flex flex-col items-center justify-center;
 }

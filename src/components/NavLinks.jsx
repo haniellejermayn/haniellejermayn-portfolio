@@ -1,5 +1,8 @@
+"use client"
+
 import Link from 'next/link';
 import React from 'react';
+import { usePathname } from "next/navigation";
 
 const links = [
   {
@@ -25,12 +28,22 @@ const links = [
 ];
 
 const NavLinks = ({ containerStyles }) => {
+  const pathname = usePathname();
   return (
     <ul className={containerStyles}>
       {links.map((link, index) => {
+        // Determine if the current link matches the active route
+        const isActive = pathname === link.path;
+
+        // Calculate the number of chars in the link name
+        const charLength = link.name.length;
+
+        // Set the line width based on character length
+        const lineWidth = charLength > 5 ? "after:w-[120%]" : "after:w-[80%]"; 
+
         return (
-          <Link href={link.path} key={index}>
-            {link.name}
+          <Link href={link.path} key={index} className={`link ${isActive && `${lineWidth} active-link`}`}>
+            <span className="relative z-10">{link.name}</span>
           </Link>
         );
       })}
