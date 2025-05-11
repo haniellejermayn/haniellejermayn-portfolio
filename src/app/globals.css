@@ -49,7 +49,7 @@ body {
 }
 
 .content-wrapper {
-  @apply w-full max-w-[1130px] px-[15px] mx-auto bg-pink-50/10;
+  @apply w-full max-w-[1130px] px-[15px] mx-auto;
 }
 
 /* Buttons */
