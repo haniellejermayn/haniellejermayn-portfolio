@@ -3,6 +3,7 @@ import "./globals.css";
 
 // Component Imports
 import MainNav from "@/components/MainNav";
+import PageTransition from "@/components/PageTransition";
 
 // Initializes the font by calling the imported function
 // Downloads the font, optimizes it, and prepares it for use
@@ -20,15 +21,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${sometypeMono.variable} antialiased`}>
-        <div className="flex">
-          <div className="nav-wrapper">
-            <MainNav />
+        <PageTransition>
+          <div className="flex">
+            <div className="nav-wrapper">
+              <MainNav />
+            </div>
+            <main className="content-wrapper">
+              <header>header</header>
+              <section className="page-content">{children}</section>
+            </main>
           </div>
-          <main className="content-wrapper">
-            <header>header</header>
-            <section className="page-content">{children}</section>
-          </main>
-        </div>
+        </PageTransition>
       </body>
     </html>
   );

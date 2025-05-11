@@ -17,6 +17,7 @@ const eslintConfig = [
     files: ["src/**/*.{js,jsx,ts,tsx}"],  // Target JS, JSX, TS, and TSX files in src/
     rules: {
       "semi": ["error", "always"],  // Enforce semicolons at the end of statements
+      "indent": ["error", 2]        // Enforce 2 spaces for indentation
     },
   },
   {
