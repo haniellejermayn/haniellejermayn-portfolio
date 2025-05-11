@@ -1,13 +1,18 @@
-import React from 'react';
+"use client";
+import { motion } from "framer-motion";
 
-const page = () => {
+const Home = () => {
   return (
-    <div className="py-24">
-      <h1 className="h1">
-        Lorem, ipsum.
-      </h1>
-    </div>
+    <motion.section 
+      initial={{opacity: 0}} 
+      animate={{
+        opacity: 1, 
+        transition: {delay: 2.4, duration: 0.4, ease: "easeIn" }
+      }}
+    >
+      Home
+    </motion.section>
   );
 };
 
-export default page;
+export default Home;
