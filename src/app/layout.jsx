@@ -1,6 +1,11 @@
-import { Sometype_Mono } from "next/font/google";
+import { Sometype_Mono } from "next/font/google"; // Imports the font loader
 import "./globals.css";
 
+// Component Imports
+import MainNav from "@/components/MainNav";
+
+// Initializes the font by calling the imported function
+// Downloads the font, optimizes it, and prepares it for use
 const sometypeMono = Sometype_Mono({
   variable: "--font-sometype-mono",
   subsets: ["latin"],
@@ -14,10 +19,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${sometypeMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${sometypeMono.variable} antialiased`}>
+        <div className="flex">
+          <nav className="main-nav">
+            <MainNav />
+          </nav>
+          <main className="content-wrapper">
+            <header>header</header>
+            <section className="page-content">{children}</section>
+          </main>
+        </div>
       </body>
     </html>
   );
