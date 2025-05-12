@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { TypeAnimation } from "react-type-animation";
 
 import Blob from "@/components/Blob";
 import Image from "next/image";
@@ -17,7 +18,32 @@ const Home = () => {
     >
       <div className="flex flex-col xl:flex-row items-center justify-between w-full">
         {/* Text */}
-        <div className="w-full xl:w-[550px]">text</div>
+        <div className="w-full xl:w-[550px]">
+          <h1 className="h1">
+            Hello! I'm Hanielle, <br />
+            <span className="inline-block">
+              {/* This wrapper ensures that the animation respects line breaks */}
+              <TypeAnimation
+                sequence={[
+                  "Full-Stack Developer",
+                  2000,
+                  "Frontend Developer",
+                  2000,
+                  "Backend Developer",
+                  2000,
+                  "Blockchain Developer",
+                  2000
+                ]}
+                wrapper="span"
+                speed={40}
+                className="text-accent"
+                repeat={Infinity}
+                cursor={false}
+              />
+            </span>
+          </h1>
+          <p></p>
+        </div>
 
         {/* Blob & Image */}
         <div className="hidden xl:block flex-1 relative z-20">
