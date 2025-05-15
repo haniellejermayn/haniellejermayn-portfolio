@@ -1,6 +1,8 @@
 "use client";
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
+import { MdArrowOutward } from "react-icons/md";
+import { HiOutlinePhone, HiOutlineMailm, HiOutlineMail } from "react-icons/hi";
 
 import Blob from "@/components/Blob";
 import Image from "next/image";
@@ -18,8 +20,8 @@ const Home = () => {
     >
       <div className="flex flex-col xl:flex-row items-center justify-between w-full">
         {/* Text */}
-        <div className="w-full xl:w-[550px]">
-          <h1 className="h1">
+        <div className="w-full xl:w-[550px] flex flex-col items-center xl:items-start text-center xl:text-left">
+          <h1 className="h1 flex-1 mb-[28px]">
             Hello! I'm Hanielle, <br />
             <span className="inline-block">
               {/* This wrapper ensures that the animation respects line breaks */}
@@ -42,7 +44,35 @@ const Home = () => {
               />
             </span>
           </h1>
-          <p></p>
+          <p className="max-w-[500px] mb-[44px]">
+            I'm a Computer Science student at DLSU, exploring technology from
+            web development to apps and more. <br />
+            I'm always eager to learn and take on new challenges!
+          </p>
+          <button className="btn btn-lg btn-accent mb-16">
+            <div className="flex items-center gap-3">
+              <span>Let's talk.</span>
+              <MdArrowOutward className="text-xl"></MdArrowOutward>
+            </div>
+          </button>
+          {/* Contact Info */}
+          <div className="flex flex-col  gap-4 xl:gap-2">
+            {/* Mail */}
+            <div className="flex items-center gap-2 text-lg">
+              <span className="text-accent">
+                <HiOutlineMail className="text-xl"></HiOutlineMail>
+              </span>
+              <span>chua.haniellejermayn@gmail.com</span>
+            </div>
+            {/* Phone */}
+            <div className="flex items-center gap-2 text-lg">
+              <span className="text-accent">
+                <HiOutlinePhone className="text-xl"></HiOutlinePhone>
+              </span>
+              <span>+63 993 935 5665</span>
+            </div>
+          </div>
+          {/* Socials */}
         </div>
 
         {/* Blob & Image */}
@@ -59,7 +89,6 @@ const Home = () => {
             className="absolute top-[-30px] left-[30px] rounded-full"
           />
           {/* Overlay Gradient */}
-          {/* Smooth Overlay Gradient */}
           <div
             style={{
               position: "absolute",
@@ -68,7 +97,7 @@ const Home = () => {
               width: "100%",
               height: "200px",
               background:
-                "linear-gradient(to top, #0d120e 5%, rgba(13, 18, 14, 0.95) 15%, rgba(13, 18, 14, 0.85) 30%, rgba(13, 18, 14, 0.75) 45%, rgba(13, 18, 14, 0.6) 60%, rgba(13, 18, 14, 0.4) 75%, rgba(13, 18, 14, 0.2) 85%, rgba(13, 18, 14, 0.05) 95%, transparent 100%)",
+                "linear-gradient(to top, #0d120e 10%, rgba(13, 18, 14, 0.95) 20%, rgba(13, 18, 14, 0.85) 30%, rgba(13, 18, 14, 0.75) 45%, rgba(13, 18, 14, 0.6) 60%, rgba(13, 18, 14, 0.4) 75%, rgba(13, 18, 14, 0.2) 85%, rgba(13, 18, 14, 0.05) 95%, transparent 100%)",
               borderRadius: "50%"
             }}
           />

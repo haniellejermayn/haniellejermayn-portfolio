@@ -26,7 +26,7 @@ body {
 }
 
 .h1 {
-  @apply text-[32px] md:text-[44px] xl:text-[48px] leading-[1]
+  @apply text-[32px] md:text-[44px] xl:text-[48px] leading-[1.15]
   tracking-tight font-extrabold;
 }
 
