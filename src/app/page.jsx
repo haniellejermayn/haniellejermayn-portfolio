@@ -19,6 +19,7 @@ const Home = () => {
       }}
       className="h-screen flex items-center"
     >
+      {/* Background Gradient */}
       <div className="flex flex-col xl:flex-row items-center justify-between w-full">
         {/* Text */}
         <div className="w-full xl:w-[550px] flex flex-col items-center xl:items-start text-center xl:text-left">
