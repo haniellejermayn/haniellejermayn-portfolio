@@ -6,6 +6,7 @@ import MainNav from "@/components/MainNav";
 import PageTransition from "@/components/PageTransition";
 import RectangleTransition from "@/components/RectangleTransition";
 import Gradient from "@/components/Gradient";
+import Header from "@/components/Header";
 
 // Initializes the font by calling the imported function
 // Downloads the font, optimizes it, and prepares it for use
@@ -33,7 +34,7 @@ export default function RootLayout({ children }) {
               <MainNav />
             </div>
             <main className="content-wrapper">
-              <header>header</header>
+              <Header />
               <section className="page-content">{children}</section>
             </main>
           </div>
