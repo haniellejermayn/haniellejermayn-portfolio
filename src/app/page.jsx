@@ -7,6 +7,7 @@ import { HiOutlinePhone, HiOutlineMailm, HiOutlineMail } from "react-icons/hi";
 import Blob from "@/components/Blob";
 import Image from "next/image";
 import avatarImg from "@/../public/assets/avatarImg.png";
+import Socials from "@/components/Socials";
 
 const Home = () => {
   return (
@@ -38,7 +39,7 @@ const Home = () => {
                 ]}
                 wrapper="span"
                 speed={40}
-                className="text-accent"
+                className="text-accent-header"
                 repeat={Infinity}
                 cursor={false}
               />
@@ -56,7 +57,7 @@ const Home = () => {
             </div>
           </button>
           {/* Contact Info */}
-          <div className="flex flex-col  gap-4 xl:gap-2">
+          <div className="flex flex-col items-center xl:items-start gap-4 xl:gap-2 mb-12">
             {/* Mail */}
             <div className="flex items-center gap-2 text-lg">
               <span className="text-accent">
@@ -73,6 +74,12 @@ const Home = () => {
             </div>
           </div>
           {/* Socials */}
+          <Socials
+            containerStyles="flex 2xl:flex-col gap-6 2xl:flex 2xl:absolute 
+            2xl:top-1/2 2xl:right-2 2xl:transform 2xl:-translate-x-1/2 2xl:-translate-y-1/2"
+            iconStyles="bg-accent text-white hover:bg-accent-hover transition w-[48px] h-[48px]
+            text-[22px] flex items-center justify-center rounded-full cursor-pointer"
+          />
         </div>
 
         {/* Blob & Image */}
