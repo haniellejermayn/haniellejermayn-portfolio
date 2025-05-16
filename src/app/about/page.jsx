@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 import Image from "next/image";
+import Stats from "@/components/Stats";
+import Info from "@/components/Info";
 
 const About = () => {
   return (
@@ -38,9 +40,8 @@ const About = () => {
               challenges.
             </p>
             <div className="flex flex-col items-start gap-16">
-              <div>stats</div>
-              <div>testimonial</div>
-              <div>info</div>
+              {/* NOTE: add Stats Component when impressive */}
+              <Info />
               <div>journey</div>
               <div>skills</div>
             </div>
