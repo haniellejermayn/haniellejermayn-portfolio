@@ -30,13 +30,13 @@ export default function RootLayout({ children }) {
         <RectangleTransition />
         <PageTransition>
           <div className="flex">
-            <div className="nav-wrapper">
+            <div className="hidden 2xl:flex w-[285px] h-screen bg-secondary">
               <MainNav />
             </div>
-            <main className="content-wrapper">
+            <div className="w-full max-w-[1130px] px-[15px] mx-auto">
               <Header />
-              <section className="page-content">{children}</section>
-            </main>
+              <div>{children}</div>
+            </div>
           </div>
         </PageTransition>
       </body>

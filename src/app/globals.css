@@ -49,10 +49,6 @@ body {
   @apply px-[15px];
 }
 
-.content-wrapper {
-  @apply w-full max-w-[1130px] px-[15px] mx-auto;
-}
-
 /* Buttons */
 .btn {
   @apply flex items-center justify-center rounded-full
@@ -81,10 +77,6 @@ body {
 }
 
 /* Navigation Bar */
-.nav-wrapper {
-  @apply hidden 2xl:flex w-[285px] h-screen bg-secondary;
-}
-
 .link {
   @apply relative uppercase text-white;
 }

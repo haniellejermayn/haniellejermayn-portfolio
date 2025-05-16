@@ -17,7 +17,7 @@ import NavLinks from "@/components/NavLinks";
 
 const Header = () => {
   return (
-    <div className="2xl:hidden absolute z-40 left-0 top-0 right-0">
+    <header className="2xl:hidden relative xl:absolute z-40 left-0 top-0 right-0">
       <div className="container mx-auto">
         <div className="flex items-center justify-between py-6">
           {/* Logo */}
@@ -57,7 +57,7 @@ const Header = () => {
           </Sheet>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 
