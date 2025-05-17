@@ -13,7 +13,7 @@
   --color-primary: #0d120e;
   --color-secondary: #111a14;
   --color-accent: #5c7c54;
-  --color-accent-header: #86b97a;
+  --color-accent-light: #86b97a;
   --color-accent-hover: #4b6744;
   --color-tertiary: #18241e;
   --color-tertiary-hover: #1e2d25;
@@ -27,26 +27,26 @@ body {
 }
 
 .h1 {
-  @apply text-[32px] md:text-[44px] xl:text-[48px] leading-[1.15]
-  tracking-tight font-extrabold;
+  @apply text-[26px] md:text-[36px] xl:text-[38px] leading-[1.15]
+  tracking-tight font-extrabold; /* 28px→22px, 40px→32px, 42px→34px */
 }
 
 .h2 {
-  @apply text-[32px] md:text-[36px] xl:text-[38px] leading-[1.15]
-  tracking-tight font-medium;
+  @apply text-[26px] md:text-[29px] xl:text-[30px] leading-[1.15]
+  tracking-tight font-medium; /* 32px→26px, 36px→29px, 38px→30px */
 }
 
 .h3 {
-  @apply text-[28px] md:text-[30px] xl:text-[32px] leading-[1.2]
-  font-medium;
+  @apply text-[22px] md:text-[24px] xl:text-[26px] leading-[1.2]
+  font-medium; /* 28px→22px, 30px→24px, 32px→26px */
 }
 
 .h4 {
-  @apply text-[22px] md:text-[26px] font-medium leading-snug;
+  @apply text-[16px] md:text-[18px] font-bold leading-snug; /* 20px→16px, 22px→18px */
 }
 
 .container {
-  @apply px-[15px];
+  @apply px-[12px]; /* 15px→12px */
 }
 
 /* Buttons */
@@ -83,5 +83,5 @@ body {
 
 .active-link {
   @apply after:content-[''] after:block after:absolute after:left-0 after:top-1/2 
-        after:h-[4px] after:bg-accent after:-translate-y-1/2 after:z-0;
+        after:h-[3px] after:bg-accent after:-translate-y-1/2 after:z-0; /* h-[4px]→h-[3px] */
 }

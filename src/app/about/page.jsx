@@ -6,6 +6,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import Image from "next/image";
 import Stats from "@/components/Stats";
 import Info from "@/components/Info";
+import Education from "@/components/Education";
 
 const About = () => {
   return (
@@ -15,22 +16,36 @@ const About = () => {
         opacity: 1,
         transition: { delay: 2.4, duration: 0.4, ease: "easeIn" }
       }}
-      className="h-screen flex item-center"
+      className="h-screen flex item-center 2xl:mt-2"
     >
-      <div className="container mx-auto mt-[120px] px-0 xl:m-auto">
-        <div className="flex flex-col xl:flex-row items-center gap-24 w-full h-[680px] 2xl:m-auto">
+      <div className="container mx-auto px-0 lg:mx-auto">
+        <div className="flex flex-col xl:flex-row items-center gap-24 w-full h-[550px] 2xl:m-auto">
           {/* Image & Social Icons */}
           <div className="hidden xl:flex w-full h-full pt-14 max-w-[430px] relative bg-pink-50/10">
             1
           </div>
           {/* Scroll Area */}
-          <ScrollArea className="w-full h-[680px]">
+          <ScrollArea className="w-full h-[80vh] xl:h-[550px]">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-2 h-2 bg-accent rounded-full"></div>
+              <motion.div
+                initial={{ opacity: 1 }}
+                animate={{
+                  opacity: [1, 0, 1] // cycles from visible to invisible and back
+                }}
+                transition={{
+                  delay: 1,
+                  duration: 2, // duration of one full cycle
+                  ease: "easeInOut",
+                  repeat: Infinity,
+                  repeatType: "loop" // or "reverse" for smoother back and forth
+                }}
+                className="w-2 h-2 bg-accent rounded-full"
+              />
               <p>About me</p>
             </div>
             <h2 className="h2 mb-6">
-              <span className="text-accent">Hanielle</span> Jermayn E. Chua
+              <span className="text-accent-light">Hanielle</span> Jermayn E.
+              Chua
             </h2>
             <p className="max-w-[540px] mb-12">
               Full-stack developer with experience building user-friendly
@@ -42,7 +57,7 @@ const About = () => {
             <div className="flex flex-col items-start gap-16">
               {/* NOTE: add Stats Component when impressive */}
               <Info />
-              <div>journey</div>
+              <Education />
               <div>skills</div>
             </div>
           </ScrollArea>

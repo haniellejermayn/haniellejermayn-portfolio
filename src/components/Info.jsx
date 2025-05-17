@@ -10,14 +10,14 @@ const Info = () => {
     <div className="flex flex-col gap-6 md:gap-10">
       <div className="flex flex-col md:flex-row gap-4">
         <div className="w-[280px] flex items-start gap-4">
-          <HiOutlineUser className="text-2xl mt-1 text-accent" />
+          <HiOutlineUser className="text-2xl mt-1 text-accent-light" />
           <div>
             <p className="text-lg">Date of Birth</p>
             <p>11 December 2003</p>
           </div>
         </div>
         <div className="w-[280px] flex items-start gap-4">
-          <HiOutlineLocationMarker className="text-2xl mt-1 text-accent" />
+          <HiOutlineLocationMarker className="text-2xl mt-1 text-accent-light" />
           <div>
             <p className="text-lg">Location</p>
             <p>Manila, Philippines</p>
@@ -26,14 +26,14 @@ const Info = () => {
       </div>
       <div className="flex flex-col md:flex-row gap-4">
         <div className="w-[280px] flex items-start gap-4">
-          <HiOutlineMail className="text-2xl mt-1 text-accent" />
+          <HiOutlineMail className="text-2xl mt-1 text-accent-light" />
           <div>
             <p className="text-lg">Email Address</p>
-            <p className="text-sm pt-0.5">chua.haniellejermayn@gmail.com</p>
+            <p className="text-sm pt-1">chua.haniellejermayn@gmail.com</p>
           </div>
         </div>
         <div className="w-[280px] flex items-start gap-4">
-          <HiOutlinePhone className="text-2xl mt-1 text-accent my-auto" />
+          <HiOutlinePhone className="text-2xl mt-1 text-accent-light my-auto" />
           <div>
             <p className="text-lg">Phone Number</p>
             <p>+63 993 935 5665</p>

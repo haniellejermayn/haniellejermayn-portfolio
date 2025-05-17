@@ -29,6 +29,7 @@ function ScrollBar({ className, orientation = "vertical", ...props }) {
     <ScrollAreaPrimitive.ScrollAreaScrollbar
       data-slot="scroll-area-scrollbar"
       orientation={orientation}
+      forceMount
       className={cn(
         "flex touch-none p-px transition-colors select-none",
         orientation === "vertical" &&
@@ -42,6 +43,7 @@ function ScrollBar({ className, orientation = "vertical", ...props }) {
       <ScrollAreaPrimitive.ScrollAreaThumb
         data-slot="scroll-area-thumb"
         className="bg-accent relative flex-1 rounded-full"
+        style={{ opacity: 1 }}
       />
     </ScrollAreaPrimitive.ScrollAreaScrollbar>
   );

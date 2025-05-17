@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
         <Gradient />
         <RectangleTransition />
         <PageTransition>
-          <div className="flex">
+          <div className="flex items-center justify-center">
             <div className="hidden 2xl:flex w-[285px] h-screen bg-secondary">
               <MainNav />
             </div>

@@ -17,13 +17,13 @@ const Home = () => {
         opacity: 1,
         transition: { delay: 2.4, duration: 0.4, ease: "easeIn" }
       }}
-      className="h-screen flex items-center"
+      className="h-[80vh] flex items-center justify-center"
     >
       {/* Background Gradient */}
       <div className="flex flex-col xl:flex-row items-center justify-between w-full">
         {/* Text */}
         <div className="w-full xl:w-[550px] flex flex-col items-center xl:items-start text-center xl:text-left">
-          <h1 className="h1 flex-1 mb-[28px]">
+          <h1 className="h1 flex-1 mb-[24px]">
             Hello! I'm Hanielle, <br />
             <span className="inline-block">
               {/* This wrapper ensures that the animation respects line breaks */}
@@ -40,35 +40,35 @@ const Home = () => {
                 ]}
                 wrapper="span"
                 speed={40}
-                className="text-accent-header"
+                className="text-accent-light"
                 repeat={Infinity}
                 cursor={false}
               />
             </span>
           </h1>
-          <p className="max-w-[500px] mb-[44px]">
+          <p className="max-w-[500px] mb-[32px]">
             I'm a Computer Science student at DLSU, exploring technology from
             web development to apps and more. <br />
             I'm always eager to learn and take on new challenges!
           </p>
-          <button className="btn btn-lg btn-accent mb-16">
+          <button className="btn btn-lg btn-accent mb-10">
             <div className="flex items-center gap-3">
               <span>Let's talk.</span>
               <MdArrowOutward className="text-xl"></MdArrowOutward>
             </div>
           </button>
           {/* Contact Info */}
-          <div className="flex flex-col items-center xl:items-start gap-4 xl:gap-2 mb-12">
+          <div className="flex flex-col items-center xl:items-start gap-4 xl:gap-2 mb-8">
             {/* Mail */}
-            <div className="flex items-center gap-2 text-lg">
-              <span className="text-accent">
+            <div className="flex items-center gap-2 text-md">
+              <span className="text-accent-light">
                 <HiOutlineMail className="text-xl"></HiOutlineMail>
               </span>
               <span>chua.haniellejermayn@gmail.com</span>
             </div>
             {/* Phone */}
-            <div className="flex items-center gap-2 text-lg">
-              <span className="text-accent">
+            <div className="flex items-center gap-2 text-md">
+              <span className="text-accent-light">
                 <HiOutlinePhone className="text-xl"></HiOutlinePhone>
               </span>
               <span>+63 993 935 5665</span>
@@ -86,24 +86,24 @@ const Home = () => {
         {/* Blob & Image */}
         <div className="hidden xl:block flex-1 relative z-20">
           {/* Blob */}
-          <Blob containerStyles="w-[560px] h-[560px]" />
+          <Blob containerStyles="w-[510px] h-[510px]" />
           {/* Avatar Image */}
           <Image
             src={avatarImg}
             alt=""
-            width={550}
-            height={550}
+            width={480}
+            height={480}
             quality={100}
-            className="absolute top-[-30px] left-[30px] rounded-full"
+            className="absolute top-[-10px] left-[30px] rounded-full"
           />
           {/* Overlay Gradient */}
           <div
             style={{
               position: "absolute",
               bottom: 0,
-              left: "2.5rem",
+              left: "0.8rem",
               width: "100%",
-              height: "200px",
+              height: "175px",
               background:
                 "linear-gradient(to top, #0d120e 10%, rgba(13, 18, 14, 0.95) 20%, rgba(13, 18, 14, 0.85) 30%, rgba(13, 18, 14, 0.75) 45%, rgba(13, 18, 14, 0.6) 60%, rgba(13, 18, 14, 0.4) 75%, rgba(13, 18, 14, 0.2) 85%, rgba(13, 18, 14, 0.05) 95%, transparent 100%)",
               borderRadius: "50%"
