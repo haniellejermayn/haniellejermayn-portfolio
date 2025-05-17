@@ -24,7 +24,7 @@ const Header = () => {
           <Logo />
           {/* Nav Mobile - (Sheet Component) */}
           <Sheet>
-            <SheetTrigger className="cursor-pointer text-[30px] text-white">
+            <SheetTrigger className="cursor-pointer text-[30px] text-white z-[1000]">
               <CiMenuFries />
             </SheetTrigger>
             <SheetContent
