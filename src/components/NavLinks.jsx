@@ -39,10 +39,14 @@ const NavLinks = ({ containerStyles }) => {
         const charLength = link.name.length;
 
         // Set the line width based on character length
-        const lineWidth = charLength > 5 ? "after:w-[120%]" : "after:w-[80%]"; 
+        const lineWidth = charLength > 5 ? "after:w-[120%]" : "after:w-[80%]";
 
         return (
-          <Link href={link.path} key={index} className={`link ${isActive && `${lineWidth} active-link`}`}>
+          <Link
+            href={link.path}
+            key={index}
+            className={`link ${isActive && `${lineWidth} active-link`}`}
+          >
             <span className="relative z-10">{link.name}</span>
           </Link>
         );

@@ -7,6 +7,7 @@ import Image from "next/image";
 import Stats from "@/components/Stats";
 import Info from "@/components/Info";
 import Education from "@/components/Education";
+import Skills from "@/components/Skills";
 
 const About = () => {
   return (
@@ -58,7 +59,7 @@ const About = () => {
               {/* NOTE: add Stats Component when impressive */}
               <Info />
               <Education />
-              <div>skills</div>
+              <Skills />
             </div>
           </ScrollArea>
         </div>
