@@ -41,7 +41,7 @@ const Header = () => {
               </SheetHeader>
               <NavLinks containerStyles="flex flex-col gap-8 max-w-[100px]" />
               <div>
-                <button className="btn btn-lg btn-tertiary mb-16">
+                <button className="btn btn-lg btn-tertiary my-8">
                   <div className="flex items-center gap-3">
                     <span>Download CV</span>
                     <MdFileDownload className="text-xl"></MdFileDownload>

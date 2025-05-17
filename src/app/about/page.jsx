@@ -16,7 +16,7 @@ const About = () => {
         opacity: 1,
         transition: { delay: 2.4, duration: 0.4, ease: "easeIn" }
       }}
-      className="h-screen flex item-center 2xl:mt-2"
+      className="lg:h-[80vh] flex items-center justify-center"
     >
       <div className="container mx-auto px-0 lg:mx-auto">
         <div className="flex flex-col xl:flex-row items-center gap-24 w-full h-[550px] 2xl:m-auto">
