@@ -4,7 +4,10 @@ import { motion } from "framer-motion";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 import Image from "next/image";
-import Stats from "@/components/Stats";
+import avatarImg from "@/../public/assets/avatarImg.png";
+import Blob from "@/components/Blob";
+// import Stats from "@/components/Stats"; // Uncomment when you have stats to show
+import Socials from "@/components/Socials";
 import Info from "@/components/Info";
 import Education from "@/components/Education";
 import Skills from "@/components/Skills";
@@ -22,9 +25,46 @@ const About = () => {
       <div className="container mx-auto px-0 lg:mx-auto">
         <div className="flex flex-col xl:flex-row items-center gap-24 w-full h-[550px] 2xl:m-auto">
           {/* Image & Social Icons */}
-          <div className="hidden xl:flex w-full h-full pt-14 max-w-[430px] relative bg-pink-50/10">
-            1
+          <div className="hidden xl:flex flex-col w-full h-full pt-14 max-w-[430px] relative">
+            <Image
+              src={avatarImg}
+              width={420}
+              height={420}
+              alt=""
+              quality={100}
+              className="z-20 relative rounded-full"
+            />
+
+            {/* Overlay */}
+            <div
+              className="w-[420px] h-[60px] absolute left-0 top-[334px]
+              right-0 bg-gradient-to-t from-primary via-primary/90 z-30"
+              style={{
+                position: "absolute",
+                bottom: 0,
+                left: "0.8rem",
+                width: "100%",
+                height: "175px",
+                background:
+                  "linear-gradient(to top, #0d120e 10%, rgba(13, 18, 14, 0.95) 20%, rgba(13, 18, 14, 0.85) 30%, rgba(13, 18, 14, 0.75) 45%, rgba(13, 18, 14, 0.6) 60%, rgba(13, 18, 14, 0.4) 75%, rgba(13, 18, 14, 0.2) 85%, rgba(13, 18, 14, 0.05) 95%, transparent 100%)",
+                borderRadius: "58%"
+              }}
+            ></div>
+
+            {/* Blob */}
+            <div className="absolute top-[75px] -left-[30px] z-10">
+              <Blob containerStyles="w-[420px] h-[420px]" />
+            </div>
+
+            <div className="z-100 flex items-center justify-center w-[85%] pt-5">
+              <Socials
+                containerStyles="flex items-center justify-center gap-4 z-40 w-full transform translate-x-[30px]"
+                iconStyles="w-[48px] h-[48px] text-[30px] text-accent-light hover:text-accent-hover 
+              transition-all flex items-center justify-center rounded-full cursor-pointer"
+              />
+            </div>
           </div>
+
           {/* Scroll Area */}
           <ScrollArea className="w-full h-[80vh] xl:h-[550px]">
             <div className="flex items-center gap-3 mb-4">

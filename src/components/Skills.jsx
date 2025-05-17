@@ -96,13 +96,13 @@ const Skills = () => {
                   return (
                     <TooltipProvider key={skill.name}>
                       <Tooltip>
-                        <TooltipTrigger className="w-16 h-16 rounded-full flex items-center justify-center bg-tertiary/70 group">
-                          <div className="text-3xl group-hover:text-accent-hover transition-all duration-300">
+                        <TooltipTrigger className="w-16 h-16 rounded-full flex items-center justify-center bg-tertiary/70 group z-50">
+                          <div className="text-3xl group-hover:text-accent-hover transition-all duration-300 z-40">
                             {skill.icon}
                           </div>
                         </TooltipTrigger>
                         <TooltipContent>
-                          <p className="text-lg">{skill.name}</p>
+                          <p className="text-lg z-1000">{skill.name}</p>
                         </TooltipContent>
                       </Tooltip>
                     </TooltipProvider>
