@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useState, useEffect, useRef } from "react";
 
 import Image from "next/image";
 import avatarImg from "@/../public/assets/avatarImg.png";
@@ -13,6 +14,46 @@ import Education from "@/components/Education";
 import Skills from "@/components/Skills";
 
 const About = () => {
+  const [isAtBottom, setIsAtBottom] = useState(false);
+  const scrollAreaRef = useRef(null);
+
+  // Function to check if user has scrolled to the bottom
+  const checkScrollPosition = () => {
+    if (!scrollAreaRef.current) return;
+
+    const scrollContainer = scrollAreaRef.current.querySelector(
+      "[data-radix-scroll-area-viewport]"
+    );
+
+    if (scrollContainer) {
+      const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
+
+      // Consider "at bottom" when within 20px of the bottom
+      const isBottom = scrollHeight - scrollTop - clientHeight < 20;
+      setIsAtBottom(isBottom);
+    }
+  };
+
+  useEffect(() => {
+    // Get the scroll viewport element after component mounts
+    const scrollViewport = scrollAreaRef.current?.querySelector(
+      "[data-radix-scroll-area-viewport]"
+    );
+
+    if (scrollViewport) {
+      // Initial check
+      checkScrollPosition();
+
+      // Add scroll event listener
+      scrollViewport.addEventListener("scroll", checkScrollPosition);
+
+      // Clean up
+      return () => {
+        scrollViewport.removeEventListener("scroll", checkScrollPosition);
+      };
+    }
+  }, []);
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -66,7 +107,10 @@ const About = () => {
           </div>
 
           {/* Scroll Area */}
-          <ScrollArea className="w-full h-[80vh] xl:h-[550px]">
+          <ScrollArea
+            className="w-full h-[80vh] xl:h-[550px]"
+            ref={scrollAreaRef}
+          >
             <div className="flex items-center gap-3 mb-4">
               <motion.div
                 initial={{ opacity: 1 }}
@@ -102,35 +146,36 @@ const About = () => {
               <Skills />
             </div>
 
-            {/* Scroll Down Nudge */}
-            {/* TODO: Should disappear upon scroll and at the bottom */}
-            <motion.div
-              initial={{ y: 0 }}
-              animate={{ y: [0, 10, 0] }}
-              transition={{
-                repeat: Infinity,
-                duration: 1.5,
-                ease: "easeInOut"
-              }}
-              className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-50"
-            >
-              <div className="flex flex-col items-center text-accent-light">
-                <span className="text-sm mb-1">Scroll</span>
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </div>
-            </motion.div>
+            {/* Scroll Down Nudge - Only shows when not at bottom */}
+            {!isAtBottom && (
+              <motion.div
+                initial={{ y: 0 }}
+                animate={{ y: [0, 10, 0] }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 1.5,
+                  ease: "easeInOut"
+                }}
+                className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-50"
+              >
+                <div className="flex flex-col items-center text-accent-light">
+                  <span className="text-sm mb-1">Scroll</span>
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </div>
+              </motion.div>
+            )}
           </ScrollArea>
         </div>
       </div>
