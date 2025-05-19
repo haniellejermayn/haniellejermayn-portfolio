@@ -85,9 +85,9 @@ const Projects = () => {
         opacity: 1,
         transition: { delay: 2.4, duration: 0.4, ease: "easeIn" }
       }}
-      className="min-h-[80vh] flex items-center py-0"
+      className="min-h-screen flex items-start py-0"
     >
-      <div className="container mx-auto w-full h-[80vh] flex flex-col mt-2">
+      <div className="container mx-auto w-full h-screen flex flex-col mt-2">
         {/* Header */}
         <h2 className="h2 mb-2 max-w-[600px]">
           My <span className="text-accent-light">Projects</span>
@@ -110,7 +110,7 @@ const Projects = () => {
             })}
           </TabsList>
           {/* Tabs Content */}
-          <div className="scrollbar scrollbar-thumb-accent scrollbar-track-accent/5 overflow-y-scroll xl:overflow-y-visible">
+          <div className="h-[60vh] scrollbar scrollbar-thumb-accent scrollbar-track-accent/5 overflow-y-scroll xl:overflow-y-visible">
             {categories.map((category) => {
               return (
                 <TabsContent key={category} value={category}>
@@ -188,7 +188,7 @@ const Projects = () => {
                                     </div>
                                   )}
                                 {/* Buttons */}
-                                <div className="mt-2 flex flex-row gap-4">
+                                <div className="mt-2 flex flex-row gap-2">
                                   {project.link && (
                                     <Link href={project.link}>
                                       <button className="btn btn-sm btn-accent flex gap-2">

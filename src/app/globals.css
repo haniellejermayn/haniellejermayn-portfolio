@@ -57,7 +57,7 @@ body {
 }
 
 .btn-sm {
-  @apply min-w-[168px] px-5 text-[15px] font-semibold;
+  @apply min-w-[140px] px-5 text-[14px] font-semibold;
 }
 
 .btn-lg {
