@@ -87,7 +87,7 @@ const Projects = () => {
       }}
       className="min-h-screen flex items-start py-0"
     >
-      <div className="container mx-auto w-full h-screen flex flex-col mt-2">
+      <div className="container mx-auto w-full h-screen flex flex-col mt-2 2xl:justify-center">
         {/* Header */}
         <h2 className="h2 mb-2 max-w-[600px]">
           My <span className="text-accent-light">Projects</span>

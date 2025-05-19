@@ -126,7 +126,7 @@ const Experience = () => {
         opacity: 1,
         transition: { delay: 2.4, duration: 0.4, ease: "easeIn" }
       }}
-      className="min-h-screen flex items-start"
+      className="min-h-screen flex items-start 2xl:items-center"
     >
       <div className="container mx-auto flex flex-col">
         {/* Header */}
