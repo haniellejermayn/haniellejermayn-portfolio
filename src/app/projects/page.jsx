@@ -4,15 +4,17 @@ import { motion } from "framer-motion";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination } from "swiper/modules";
+import { Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/navigation";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from "next/link";
 import Image from "next/image";
 import { MdArrowOutward } from "react-icons/md";
 import { FaGithub } from "react-icons/fa";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const projects = [
   {
@@ -85,18 +87,15 @@ const Projects = () => {
       }}
       className="min-h-[80vh] flex items-center py-0"
     >
-      <div className="container mx-auto w-full h-[80vh] flex flex-col mt-6">
+      <div className="container mx-auto w-full h-[80vh] flex flex-col mt-2">
         {/* Header */}
-        <h2 className="h2 mb-6 max-w-[600px]">
+        <h2 className="h2 mb-2 max-w-[600px]">
           My <span className="text-accent-light">Projects</span>
         </h2>
         {/* Tabs */}
-        <Tabs
-          defaultValue="Personal"
-          className="w-full flex flex-col gap-6 md:gap-8 2xl:gap-12"
-        >
+        <Tabs defaultValue="Personal" className="w-full flex flex-col gap-2 ">
           {/* Tabs List */}
-          <TabsList className="flex flex-wrap justify-center items-center gap-4 h-full mb-4 md:mb-0">
+          <TabsList className="max-h-[80px] flex flex-wrap justify-center items-center gap-4 h-full mb-0">
             {categories.map((category) => {
               return (
                 <TabsTrigger
@@ -111,11 +110,34 @@ const Projects = () => {
             })}
           </TabsList>
           {/* Tabs Content */}
-          <div>
+          <div className="scrollbar scrollbar-thumb-accent scrollbar-track-accent/5 overflow-y-scroll xl:overflow-y-visible">
             {categories.map((category) => {
               return (
                 <TabsContent key={category} value={category}>
-                  <Swiper>
+                  {/* Custom pagination container - positioned at the top, outside content */}
+                  <div className="swiper-pagination-custom flex justify-center items-center gap-4 mb-6"></div>
+
+                  <Swiper
+                    modules={[Pagination, Navigation]}
+                    pagination={{
+                      clickable: true,
+                      el: ".swiper-pagination-custom",
+                      renderBullet: function (index, className) {
+                        return (
+                          '<span class="' +
+                          className +
+                          '">' +
+                          (index + 1) +
+                          "</span>"
+                        );
+                      }
+                    }}
+                    navigation={{
+                      prevEl: ".swiper-button-prev-custom",
+                      nextEl: ".swiper-button-next-custom"
+                    }}
+                    className="pb-4"
+                  >
                     {projects
                       .filter((project) => project.category === category)
                       .map((project) => {
@@ -133,7 +155,7 @@ const Projects = () => {
                                   {project.description}
                                 </p>
                                 {/* Tech */}
-                                <div className=" my-2">
+                                <div className="my-2">
                                   <p className="mb-2">Technologies Used</p>
                                   <ul className="flex flex-wrap gap-3">
                                     {project.tech.map((item, index) => {
@@ -186,13 +208,13 @@ const Projects = () => {
                                 </div>
                               </div>
                               {/* Project Image */}
-                              <div className="w-full h-[25vh] md:h-[50vh] relative bg-pink-50/10 order-1 md:order-none rounded-lg overflow-hidden">
+                              <div className="w-full h-[20vh] md:h-[50vh] relative bg-pink-50/10 order-1 md:order-none rounded-lg overflow-hidden">
                                 <Image
                                   src={project.image}
                                   alt={project.title}
                                   fill
                                   sizes="(max-width: 768px) 100vw, 50vw"
-                                  className="object-contain" // Changed from object-cover to object-contain
+                                  className="object-contain"
                                   priority
                                 />
                               </div>
@@ -207,6 +229,44 @@ const Projects = () => {
           </div>
         </Tabs>
       </div>
+
+      {/* Add global styles for pagination bullets */}
+      <style jsx global>{`
+        .swiper-pagination-custom {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          padding: 0 0;
+          z-index: 10;
+        }
+
+        .swiper-pagination-bullet {
+          width: 28px;
+          height: 28px;
+          background: rgba(255, 255, 255, 0.2);
+          margin: 0 5px;
+          border-radius: 50%;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 14px;
+          color: white;
+        }
+
+        .swiper-pagination-bullet-active {
+          background: var(--accent-color-light, #86b97a);
+          color: black;
+          font-weight: 600;
+        }
+
+        /* Hide default Swiper arrows since we're using custom ones */
+        .swiper-button-prev,
+        .swiper-button-next {
+          display: none;
+        }
+      `}</style>
     </motion.section>
   );
 };
