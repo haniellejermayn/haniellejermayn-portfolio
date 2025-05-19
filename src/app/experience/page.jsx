@@ -201,11 +201,15 @@ const Experience = () => {
                               <div className="flex flex-col sm:flex-row gap-4 mb-4 text-white/70">
                                 <div className="flex items-center gap-2">
                                   <FaBuilding className="text-accent-light" />
-                                  <span>{item.company}</span>
+                                  <span className="leading-[1.2]">
+                                    {item.company}
+                                  </span>
                                 </div>
                                 <div className="flex items-center gap-2">
                                   <IoCalendarOutline className="text-accent-light" />
-                                  <span>{item.duration}</span>
+                                  <span className="leading-[1.2]">
+                                    {item.duration}
+                                  </span>
                                 </div>
                               </div>
 

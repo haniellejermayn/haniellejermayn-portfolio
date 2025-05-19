@@ -208,7 +208,7 @@ const Projects = () => {
                                 </div>
                               </div>
                               {/* Project Image */}
-                              <div className="w-full h-[20vh] md:h-[50vh] relative bg-pink-50/10 order-1 md:order-none rounded-lg overflow-hidden">
+                              <div className="w-full h-[20vh] md:h-[50vh] relative bg-[#1c1c22] shadow-lg border border-white/5 order-1 md:order-none rounded-lg overflow-hidden">
                                 <Image
                                   src={project.image}
                                   alt={project.title}
