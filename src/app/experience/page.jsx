@@ -66,7 +66,7 @@ const experience = [
     description:
       "lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     logo: "/assets/experience/upd.jpg",
-    tech: ["NodeJS", "SQL", "HTML", "CSS", "JavaScript"]
+    tech: ["LocalSim"]
   },
   {
     id: 4,
@@ -77,7 +77,7 @@ const experience = [
     description:
       "lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     logo: "/assets/experience/camp.jpg",
-    tech: ["LocalSim"]
+    tech: ["NodeJS", "SQL", "HTML", "CSS", "JavaScript"]
   },
   {
     id: 5,

@@ -5,7 +5,7 @@ const education = [
     campus: "Manila",
     degree: "BS Computer Science Major in Software Technology",
     cgpa: "3.928/4.000 (Summa Cum Laude Standing)",
-    awards: "Consistent 1st Director's Lister (5 Terms)"
+    awards: "Consistent 1st Dean's Lister (5 Terms)"
   },
   {
     years: "2017 - 2023",
