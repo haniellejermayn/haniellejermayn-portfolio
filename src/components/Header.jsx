@@ -41,12 +41,16 @@ const Header = () => {
               </SheetHeader>
               <NavLinks containerStyles="flex flex-col gap-8 max-w-[100px]" />
               <div>
-                <button className="btn btn-lg btn-tertiary my-8">
+                <a
+                  href="/assets/Chua Resume.pdf"
+                  download
+                  className="btn btn-lg btn-tertiary my-8"
+                >
                   <div className="flex items-center gap-3">
                     <span>Download CV</span>
                     <MdFileDownload className="text-xl"></MdFileDownload>
                   </div>
-                </button>
+                </a>
                 <Socials
                   containerStyles="flex gap-4 item-center justify-center"
                   iconStyles="bg-accent text-white hover:bg-accent-hover transition w-[40px] h-[40px] 

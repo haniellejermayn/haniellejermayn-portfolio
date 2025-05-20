@@ -51,12 +51,15 @@ const Home = () => {
             web development to apps and more. <br />
             I'm always eager to learn and take on new challenges!
           </p>
-          <button className="btn btn-lg btn-accent mb-10">
+          <a
+            href="mailto:chua.haniellejermayn@example.com"
+            className="btn btn-lg btn-accent mb-10"
+          >
             <div className="flex items-center gap-3">
               <span>Let's talk.</span>
               <MdArrowOutward className="text-xl"></MdArrowOutward>
             </div>
-          </button>
+          </a>
           {/* Contact Info */}
           <div className="flex flex-col items-center xl:items-start gap-4 xl:gap-2 mb-8">
             {/* Mail */}
