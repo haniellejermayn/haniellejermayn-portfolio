@@ -42,7 +42,7 @@ const experience = [
     category: "Work/Internship",
     title: "Blockchain Developer Intern",
     company: "Bids n Buys",
-    duration: "May 2025 - Present",
+    duration: "February 2025 - May 2025",
     description:
       "lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     logo: "/assets/experience/bidsnbuys.jpg",
