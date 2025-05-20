@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
-import { MdArrowOutward } from "react-icons/md";
+import { MdFileDownload } from "react-icons/md";
 import { HiOutlinePhone, HiOutlineMailm, HiOutlineMail } from "react-icons/hi";
 
 import Blob from "@/components/Blob";
@@ -51,6 +51,7 @@ const Home = () => {
             web development to apps and more. <br />
             I'm always eager to learn and take on new challenges!
           </p>
+          {/* DOESNT WORK
           <a
             href="mailto:chua.haniellejermayn@example.com"
             className="btn btn-lg btn-accent mb-10"
@@ -58,6 +59,17 @@ const Home = () => {
             <div className="flex items-center gap-3">
               <span>Let's talk.</span>
               <MdArrowOutward className="text-xl"></MdArrowOutward>
+            </div>
+          </a>
+           */}
+          <a
+            href="/assets/Chua Resume.pdf"
+            download
+            className="btn btn-lg btn-tertiary mb-10"
+          >
+            <div className="flex items-center gap-3">
+              <span>Download CV</span>
+              <MdFileDownload className="text-xl"></MdFileDownload>
             </div>
           </a>
           {/* Contact Info */}
