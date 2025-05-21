@@ -136,7 +136,13 @@ const Projects = () => {
                       prevEl: ".swiper-button-prev-custom",
                       nextEl: ".swiper-button-next-custom"
                     }}
-                    className="pb-4"
+                    className={`pb-4 ${
+                      projects.filter(
+                        (project) => project.category === category
+                      ).length > 1
+                        ? "cursor-grab active:cursor-grabbing"
+                        : ""
+                    }`}
                   >
                     {projects
                       .filter((project) => project.category === category)

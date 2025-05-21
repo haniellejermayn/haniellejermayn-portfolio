@@ -172,7 +172,7 @@ const Experience = () => {
                   }}
                   spaceBetween={30}
                   slidesPerView={1}
-                  className="relative pb-16"
+                  className="relative pb-16 cursor-grab active:cursor-grabbing"
                 >
                   {experience
                     .filter((item) => item.category === category)
