@@ -24,7 +24,7 @@ const experience = [
     company: "Bids n Buys",
     duration: "May 2025 - Present",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "Promoted from intern to junior developer and now lead the development of a production-ready crypto wallet using AngularJS, integrated with Jest and Cypress for unit and E2E testing. Expanded backend infrastructure by building serverless APIs with TypeScript and MongoDB, and contributed to the accounting logic for the platform’s crypto-based e-commerce system. Additionally, manage deployment and uptime of Cardano blockchain nodes using Docker Swarm on remote Linux servers.",
     logo: "/assets/experience/bidsnbuys.jpg",
     tech: [
       "Cardano",
@@ -44,7 +44,7 @@ const experience = [
     company: "Bids n Buys",
     duration: "February 2025 - May 2025",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "Developed a prototype crypto wallet interface using AngularJS with testing via Jest and Cypress. Contributed to the creation of serverless API endpoints and connected backend services to MongoDB to support platform functionality. Assisted in setting up Cardano nodes using Docker Swarm and maintained blockchain infrastructure hosted on remote Linux servers.",
     logo: "/assets/experience/bidsnbuys.jpg",
     tech: [
       "Cardano",
@@ -64,7 +64,7 @@ const experience = [
     company: "University of the Philippines - Diliman",
     duration: "June 13 - July 01, 2022",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "Used LocalSim to model and analyze traffic flow at a high-congestion intersection in Palawan. Collected data from simulation outputs to evaluate and propose traffic alleviation scenarios. Contributed to a transport systems study under the Intelligent Transportation Systems Laboratory to support urban planning research.",
     logo: "/assets/experience/upd.jpg",
     tech: ["LocalSim"]
   },
@@ -75,7 +75,7 @@ const experience = [
     company: "Center for Applied Microelectronics and Programming, Inc.",
     duration: "June 07 - June 18, 2021",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "Assisted in developing a full-stack web application during a structured internship. Focused on backend database integration and implemented robust input validation. Utilized NodeJS, SQL, and core web technologies to contribute functional features to the system.",
     logo: "/assets/experience/camp.jpg",
     tech: ["NodeJS", "SQL", "HTML", "CSS", "JavaScript"]
   },
@@ -86,7 +86,7 @@ const experience = [
     company: "La Salle Computer Society",
     duration: "October 2024 - Present",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "Ideates and proposes tech-driven projects to enhance organizational innovation. Leads the execution of initiatives by managing logistics, coordinating teams, and ensuring timely delivery of objectives, thereby developing leadership and project management skills.",
     logo: "/assets/experience/lscs.jpg",
     tech: []
   },
@@ -97,7 +97,7 @@ const experience = [
     company: "DLSU - Microsoft Student Community",
     duration: "October 2023 - July 2024",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "Head organizer for “Build Your Professional Profile,” the org’s largest flagship event. Responsible for end-to-end event planning, including scheduling, team delegation, speaker coordination, and logistics, while ensuring professional delivery aligned with Microsoft’s branding.",
     logo: "/assets/experience/msc.jpg",
     tech: []
   },
