@@ -24,7 +24,7 @@ const experience = [
     company: "Bids n Buys",
     duration: "May 2025 - Present",
     description:
-      "Promoted from intern to junior developer and now lead the development of a production-ready crypto wallet using AngularJS, integrated with Jest and Cypress for unit and E2E testing. Expanded backend infrastructure by building serverless APIs with TypeScript and MongoDB, and contributed to the accounting logic for the platform’s crypto-based e-commerce system. Additionally, manage deployment and uptime of Cardano blockchain nodes using Docker Swarm on remote Linux servers.",
+      "Promoted from intern to junior developer; now lead development of a production-ready crypto wallet using AngularJS, with Jest and Cypress for unit and E2E testing. Expanded backend with serverless APIs using TypeScript and MongoDB, and contributed to accounting logic for the crypto-based e-commerce system. Also manage deployment and uptime of Cardano nodes via Docker Swarm on remote Linux servers.",
     logo: "/assets/experience/bidsnbuys.jpg",
     tech: [
       "Cardano",
@@ -97,7 +97,7 @@ const experience = [
     company: "DLSU - Microsoft Student Community",
     duration: "October 2023 - July 2024",
     description:
-      "Head organizer for “Build Your Professional Profile,” the org’s largest flagship event. Responsible for end-to-end event planning, including scheduling, team delegation, speaker coordination, and logistics, while ensuring professional delivery aligned with Microsoft’s branding.",
+      "Head organizer for “Build Your Professional Profile,” the org’s largest flagship event. Responsible for end-to-end event planning, including scheduling, team delegation, speaker coordination, and logistics, while ensuring professional delivery aligned with Microsoft's branding.",
     logo: "/assets/experience/msc.jpg",
     tech: []
   },
