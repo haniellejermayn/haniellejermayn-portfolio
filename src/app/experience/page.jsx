@@ -24,7 +24,7 @@ const experience = [
     company: "Bids n Buys",
     duration: "May 2025 - Present",
     description:
-      "Promoted from intern to junior developer; now lead development of a production-ready crypto wallet using AngularJS, with Jest and Cypress for unit and E2E testing. Expanded backend with serverless APIs using TypeScript and MongoDB, and contributed to accounting logic for the crypto-based e-commerce system. Also manage deployment and uptime of Cardano nodes via Docker Swarm on remote Linux servers.",
+      "Promoted from intern to junior developer; now lead development of a production-ready crypto wallet using AngularJS, with Jest and Cypress for unit and E2E testing. Expanded backend with serverless APIs using TypeScript and MongoDB, and contributed to accounting logic for the crypto-based e-commerce system. Also manage deployment and uptime of Cardano nodes via Docker Swarm on remote Linux servers. Also developed smart contracts using Haskell.",
     logo: "/assets/experience/bidsnbuys.jpg",
     tech: [
       "Cardano",
