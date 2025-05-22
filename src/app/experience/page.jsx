@@ -86,7 +86,7 @@ const experience = [
     company: "La Salle Computer Society",
     duration: "October 2024 - Present",
     description:
-      "Ideates and proposes tech-driven projects to enhance organizational innovation. Leads the execution of initiatives by managing logistics, coordinating teams, and ensuring timely delivery of objectives, thereby developing leadership and project management skills.",
+      "Served on both the Finance Committee and Publicity Team. Responsible for handling financial documentation and submitting organizational requirements. Also contributed to the planning and creation of promotional materials to support various org events.",
     logo: "/assets/experience/lscs.jpg",
     tech: []
   },
@@ -97,7 +97,7 @@ const experience = [
     company: "DLSU - Microsoft Student Community",
     duration: "October 2023 - July 2024",
     description:
-      "Head organizer for “Build Your Professional Profile,” the org’s largest flagship event. Responsible for end-to-end event planning, including scheduling, team delegation, speaker coordination, and logistics, while ensuring professional delivery aligned with Microsoft's branding.",
+      "Head organizer for “Build Your Professional Profile,” the org's largest flagship event. Responsible for end-to-end event planning, including scheduling, team delegation, speaker coordination, and logistics, while ensuring professional delivery aligned with Microsoft's branding.",
     logo: "/assets/experience/msc.jpg",
     tech: []
   },
@@ -108,7 +108,7 @@ const experience = [
     company: "Lasallian Scholars Society",
     duration: "October 2023 - July 2024",
     description:
-      "lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit. lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "Managed event documentation and logistical needs for org-wide activities. Authored detailed articles summarizing organizational events for the group’s official newsletter ChronicLSS, showcasing both technical writing and organizational support capabilities.",
     logo: "/assets/experience/lss.jpg",
     tech: []
   }
