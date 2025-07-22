@@ -24,7 +24,7 @@ const experience = [
     company: "Bids n Buys",
     duration: "May 2025 - July 2025",
     description:
-      "Promoted from intern to junior developer, I led the development of a production-ready crypto wallet using AngularJS, with Jest and Cypress for unit and E2E testing. I expanded the backend with serverless TypeScript APIs integrated with MongoDB and Akaunting for invoicing. I also set up and managed Cardano node infrastructure via Docker Swarm on remote Linux servers, developed Haskell smart contracts, and implemented a Merkle-proof–based verification system to anchor audit data on the Cardano blockchain.",
+      "Promoted from intern to junior developer, the role involved significantly expanding the backend by designing and implementing serverless TypeScript APIs integrated with MongoDB and Akaunting to support e-commerce invoicing processes. Responsibilities also included managing the Cardano node infrastructure, developing Haskell smart contracts, and ensuring reliable deployment and uptime via Docker Swarm on remote Linux servers. Additionally, I designed and developed a Merkle-proof verification system to securely record audit data on the Cardano blockchain, enhancing data integrity and tamper resistance for the platform’s transactions.",
     logo: "/assets/experience/bidsnbuys.jpg",
     tech: [
       "Cardano",
