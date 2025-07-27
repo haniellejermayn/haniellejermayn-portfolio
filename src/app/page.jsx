@@ -109,7 +109,7 @@ const Home = () => {
             width={480}
             height={480}
             quality={100}
-            className="absolute top-[-10px] left-[30px] rounded-full"
+            className="absolute top-[-10px] left-[30px] rounded-full opacity-100"
           />
           {/* Overlay Gradient */}
           <div
@@ -121,7 +121,7 @@ const Home = () => {
               height: "175px",
               background:
                 "linear-gradient(to top, #0d120e 10%, rgba(13, 18, 14, 0.95) 20%, rgba(13, 18, 14, 0.85) 30%, rgba(13, 18, 14, 0.75) 45%, rgba(13, 18, 14, 0.6) 60%, rgba(13, 18, 14, 0.4) 75%, rgba(13, 18, 14, 0.2) 85%, rgba(13, 18, 14, 0.05) 95%, transparent 100%)",
-              borderRadius: "50%"
+              borderRadius: "30%"
             }}
           />
         </div>

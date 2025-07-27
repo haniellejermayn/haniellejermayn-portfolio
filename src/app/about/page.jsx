@@ -73,7 +73,7 @@ const About = () => {
               height={420}
               alt=""
               quality={100}
-              className="z-20 relative rounded-full"
+              className="z-20 relative rounded-full -scale-x-100"
             />
 
             {/* Overlay */}
@@ -88,7 +88,7 @@ const About = () => {
                 height: "175px",
                 background:
                   "linear-gradient(to top, #0d120e 10%, rgba(13, 18, 14, 0.95) 20%, rgba(13, 18, 14, 0.85) 30%, rgba(13, 18, 14, 0.75) 45%, rgba(13, 18, 14, 0.6) 60%, rgba(13, 18, 14, 0.4) 75%, rgba(13, 18, 14, 0.2) 85%, rgba(13, 18, 14, 0.05) 95%, transparent 100%)",
-                borderRadius: "58%"
+                borderRadius: "45%"
               }}
             ></div>
 
