@@ -79,10 +79,10 @@ const skills = [
     ]
   },
   {
-    category: "Tools & Technologies",
+    category: "Tools & Other Technologies",
     items: [
       { icon: <BiLogoGit />, name: "Git" },
-      { icon: <BiLogoGithub />, name: "GitHub CI/CD" },
+      { icon: <BiLogoGithub />, name: "GitHub Actions (CI/CD)" },
       { icon: <BiLogoDocker />, name: "Docker" },
       { icon: <BiLogoAws />, name: "AWS Lambda" },
       { icon: <SiCypress />, name: "Cypress" },

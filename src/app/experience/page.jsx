@@ -32,8 +32,8 @@ const experience = [
       "MySQL",
       "Vercel",
       "Render",
-      "GitHub CI/CD",
-      "Jira",
+      "GitHub Actions (CI/CD)",
+      "GitHub Projects",
       "Agile"
     ]
   },
@@ -233,7 +233,7 @@ const Experience = () => {
                                   <div className="flex items-center gap-2 mb-2">
                                     <BsTools className="text-accent-light text-sm" />
                                     <h4 className="font-medium text-sm">
-                                      Technologies
+                                      Tech Stack / Skills
                                     </h4>
                                   </div>
 
