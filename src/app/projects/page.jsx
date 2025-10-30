@@ -44,7 +44,7 @@ const projects = [
     category: "Projects",
     title: "Portfolio",
     description:
-      "My responsive personal portfolio website built with Next.js, featuring smooth page transitions with Framer Motion and accessible UI components with shadcn/ui.",
+      "My responsive personal portfolio website built with Next.js, featuring smooth page transitions with Framer Motion and user-friendly UI components with shadcn/ui.",
     image: "/assets/projects/portfolio.png",
     link: "https://haniellejermayn-portfolio.vercel.app",
     github: "https://github.com/haniellejermayn/haniellejermayn-portfolio",
@@ -66,7 +66,7 @@ const projects = [
     category: "Projects",
     title: "[CCPROG3] Noir - Hotel Reservation System",
     description:
-      "A hotel reservation system with graphical user interface built using Java and Java Swing.",
+      "A hotel reservation system with graphical user interface (GUI) built using Java and Java Swing.",
     image: "/assets/projects/noir.png",
     link: "",
     github: "https://github.com/haniellejermayn/HotelReservationSystem",
