@@ -128,9 +128,9 @@ const Experience = () => {
         opacity: 1,
         transition: { delay: 2.4, duration: 0.4, ease: "easeIn" }
       }}
-      className="min-h-screen pb-8"
+      className="min-h-screen pb-8 2xl:flex 2xl:items-center"
     >
-      <div className="container mx-auto flex flex-col max-w-7xl w-full">
+      <div className="container mx-auto flex flex-col max-w-7xl w-full 2xl:py-8">
         {/* Header */}
         <h2 className="h2 mb-6 text-3xl lg:text-4xl font-bold">
           My <span className="text-accent-light">Experience</span>
