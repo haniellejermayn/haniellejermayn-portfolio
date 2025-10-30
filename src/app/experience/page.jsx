@@ -128,28 +128,28 @@ const Experience = () => {
         opacity: 1,
         transition: { delay: 2.4, duration: 0.4, ease: "easeIn" }
       }}
-      className="min-h-screen pb-8 2xl:flex 2xl:items-center"
+      className="min-h-screen flex items-start py-0"
     >
-      <div className="container mx-auto flex flex-col max-w-7xl w-full 2xl:py-8">
+      <div className="container mx-auto w-full h-screen flex flex-col mt-2 2xl:justify-center">
         {/* Header */}
-        <h2 className="h2 mb-6 text-3xl lg:text-4xl font-bold">
+        <h2 className="h2 mb-2 text-3xl lg:text-4xl font-bold">
           My <span className="text-accent-light">Experience</span>
         </h2>
 
         {/* Tabs */}
         <Tabs
           defaultValue={categories[0]}
-          className="w-full"
+          className="w-full flex flex-col gap-2"
           onValueChange={setActiveTab}
         >
           {/* Tabs List */}
-          <TabsList className="flex justify-center items-center gap-4 mb-6 flex-wrap">
+          <TabsList className="max-h-[80px] flex flex-wrap justify-center items-center gap-4 h-full mb-0">
             {categories.map((category) => (
               <TabsTrigger
                 key={category}
                 value={category}
                 className="capitalize border border-white/10 data-[state=active]:bg-accent 
-                data-[state=active]:border-accent h-[44px] px-5 rounded-full cursor-pointer
+                data-[state=active]:border-accent h-[48px] px-6 rounded-full cursor-pointer
                 hover:bg-white/5 transition-all"
               >
                 {category}
@@ -157,17 +157,27 @@ const Experience = () => {
             ))}
           </TabsList>
 
-          {/* Tabs Content */}
-          {categories.map((category) => (
-            <TabsContent key={category} value={category} className="mt-0">
-              <div className="w-full">
+          {/* Tabs Content with Scrollable Container */}
+          <div className="h-[60vh] scrollbar scrollbar-thumb-accent scrollbar-track-accent/5 overflow-y-scroll xl:overflow-y-visible">
+            {categories.map((category) => (
+              <TabsContent key={category} value={category} className="mt-0">
+                {/* Custom pagination container */}
+                <div className="swiper-custom-pagination flex justify-center items-center gap-4 mb-6"></div>
+
                 <Swiper
                   modules={[Pagination, Navigation]}
                   pagination={{
                     clickable: true,
-                    bulletClass: "swiper-pagination-bullet",
-                    bulletActiveClass: "swiper-pagination-bullet-active",
-                    el: ".swiper-custom-pagination"
+                    el: ".swiper-custom-pagination",
+                    renderBullet: function (index, className) {
+                      return (
+                        '<span class="' +
+                        className +
+                        '">' +
+                        (index + 1) +
+                        "</span>"
+                      );
+                    }
                   }}
                   navigation={{
                     prevEl: ".swiper-button-prev",
@@ -175,19 +185,18 @@ const Experience = () => {
                   }}
                   spaceBetween={30}
                   slidesPerView={1}
-                  className="relative cursor-grab active:cursor-grabbing"
+                  className={`pb-4 ${
+                    experience.filter((item) => item.category === category)
+                      .length > 1
+                      ? "cursor-grab active:cursor-grabbing"
+                      : ""
+                  }`}
                 >
                   {experience
                     .filter((item) => item.category === category)
                     .map((item) => (
                       <SwiperSlide key={item.id}>
-                        <div
-                          className={`flex items-center justify-center bg-[#1c1c22] rounded-xl p-6 lg:p-7 shadow-lg border border-white/5 overflow-hidden ${
-                            category === "Work/Internship"
-                              ? "min-h-[360px]"
-                              : ""
-                          }`}
-                        >
+                        <div className="flex items-center justify-center bg-[#1c1c22] rounded-xl p-6 lg:p-7 shadow-lg border border-white/5 overflow-hidden">
                           <div className="flex flex-col lg:flex-row gap-6">
                             {/* Left Column - Logo */}
                             <div className="lg:w-1/4 lg:flex-col lg:items-center flex justify-center items-start">
@@ -289,30 +298,42 @@ const Experience = () => {
                     </button>
                   </div>
                 </Swiper>
-
-                {/* Fixed Pagination */}
-                <div className="swiper-custom-pagination flex justify-center mt-5"></div>
-              </div>
-            </TabsContent>
-          ))}
+              </TabsContent>
+            ))}
+          </div>
         </Tabs>
       </div>
 
       {/* Custom Styles */}
       <style jsx global>{`
+        .swiper-custom-pagination {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          padding: 0;
+          z-index: 10;
+        }
+
         .swiper-pagination-bullet {
-          width: 12px;
-          height: 12px;
+          width: 28px;
+          height: 28px;
           background: rgba(255, 255, 255, 0.2);
-          opacity: 1;
+          margin: 0 5px;
           border-radius: 50%;
+          cursor: pointer;
           transition: all 0.3s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 14px;
+          color: white;
+          opacity: 1;
         }
 
         .swiper-pagination-bullet-active {
           background: var(--accent-color-light, #86b97a);
-          width: 16px;
-          height: 16px;
+          color: black;
+          font-weight: 600;
         }
 
         .swiper-button-prev,
