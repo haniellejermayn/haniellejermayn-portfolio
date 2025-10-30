@@ -33,11 +33,11 @@ const projects = [
     category: "Projects",
     title: "[STADVDB] IMDb OLAP Data Warehouse",
     description:
-      "A dimensional data warehouse implementing star schema for IMDb dataset analysis. Built ETL pipelines with Python and Pandas to process 12GB of data, featuring OLAP operations and query optimization.",
+      "A dimensional data warehouse implementing a star schema for IMDb dataset analysis. Built ETL pipelines with Python and Pandas to process 12GB of data. Used a Flask backend with HTML and JavaScript to serve the frontend and implemented OLAP operations for efficient analysis.",
     image: "/assets/projects/imdb.png",
     link: "",
     github: "https://github.com/haniellejermayn/IMDb-OLAPApplication",
-    tech: ["Python", "MySQL", "Pandas", "HTML", "JavaScript"]
+    tech: ["MySQL", "Python", "Pandas", "Flask", "HTML", "JavaScript"]
   },
   {
     id: 3,
