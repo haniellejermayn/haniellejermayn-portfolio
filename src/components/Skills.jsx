@@ -66,7 +66,7 @@ const skills = [
     ]
   },
   {
-    category: "Languages",
+    category: "Programming Languages",
     items: [
       { icon: <BiLogoJavascript />, name: "JavaScript" },
       { icon: <BiLogoTypescript />, name: "TypeScript" },
@@ -109,18 +109,29 @@ const Skills = () => {
               <div className="flex flex-wrap gap-6 max-w-sm xl:max-w-none">
                 {skillCategory.items.map((skill) => {
                   return (
-                    <TooltipProvider key={skill.name}>
-                      <Tooltip>
-                        <TooltipTrigger className="w-16 h-16 rounded-full flex items-center justify-center bg-tertiary/70 group z-50">
-                          <div className="text-3xl group-hover:text-accent-hover transition-all duration-300 z-40">
-                            {skill.icon}
-                          </div>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p className="text-lg z-1000">{skill.name}</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
+                    <div
+                      key={skill.name}
+                      className="flex flex-col items-center gap-2 w-20"
+                    >
+                      {/* Desktop: Tooltip */}
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger className="w-16 h-16 rounded-full flex items-center justify-center bg-tertiary/70 group">
+                            <div className="text-3xl group-hover:text-accent-hover transition-all duration-300">
+                              {skill.icon}
+                            </div>
+                          </TooltipTrigger>
+                          <TooltipContent className="hidden md:block">
+                            <p className="text-lg">{skill.name}</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+
+                      {/* Mobile: Label below icon */}
+                      <span className="md:hidden text-xs text-white/70 text-center leading-tight">
+                        {skill.name}
+                      </span>
+                    </div>
                   );
                 })}
               </div>
