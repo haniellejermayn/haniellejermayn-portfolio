@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -104,6 +105,17 @@ const projects = [
 const categories = ["Projects", "Research"];
 
 const Projects = () => {
+  const [swiperKey, setSwiperKey] = useState(0);
+
+  useEffect(() => {
+    // Wait for Framer Motion animation to complete (2.4s + 0.4s = 2.8s)
+    const timer = setTimeout(() => {
+      setSwiperKey(1); // Force Swiper to re-initialize
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -137,17 +149,20 @@ const Projects = () => {
           </TabsList>
           {/* Tabs Content */}
           <div className="h-[65vh] scrollbar scrollbar-thumb-accent scrollbar-track-accent/5 overflow-y-scroll xl:overflow-y-visible">
-            {/* Single shared pagination container - OUTSIDE the map */}
-            <div className="swiper-pagination-custom flex justify-center items-center gap-4 mb-6"></div>
-
-            {categories.map((category) => {
+            {categories.map((category, index) => {
               return (
                 <TabsContent key={category} value={category}>
+                  {/* Unique pagination per category */}
+                  <div
+                    className={`swiper-pagination-${index} flex justify-center items-center gap-4 mb-6`}
+                  ></div>
+
                   <Swiper
+                    key={`swiper-${category}-${swiperKey}`}
                     modules={[Pagination, Navigation]}
                     pagination={{
                       clickable: true,
-                      el: ".swiper-pagination-custom",
+                      el: `.swiper-pagination-${index}`,
                       renderBullet: function (index, className) {
                         return (
                           '<span class="' +
@@ -264,7 +279,7 @@ const Projects = () => {
 
       {/* Add global styles for pagination bullets */}
       <style jsx global>{`
-        .swiper-pagination-custom {
+        [class*="swiper-pagination-"] {
           width: 100%;
           display: flex;
           justify-content: center;
@@ -293,7 +308,7 @@ const Projects = () => {
           font-weight: 600;
         }
 
-        /* Hide default Swiper arrows since we're using custom ones */
+        /* Hide default Swiper arrows */
         .swiper-button-prev,
         .swiper-button-next {
           display: none;

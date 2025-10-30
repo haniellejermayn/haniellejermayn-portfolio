@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -118,6 +119,17 @@ const experience = [
 const categories = ["Work/Internship", "Org Work"];
 
 const Experience = () => {
+  const [swiperKey, setSwiperKey] = useState(0);
+
+  useEffect(() => {
+    // Wait for Framer Motion animation to complete (2.4s + 0.4s = 2.8s)
+    const timer = setTimeout(() => {
+      setSwiperKey(1); // Force Swiper to re-initialize
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -155,16 +167,19 @@ const Experience = () => {
 
           {/* Tabs Content with Scrollable Container */}
           <div className="h-[65vh] scrollbar scrollbar-thumb-accent scrollbar-track-accent/5 overflow-y-scroll xl:overflow-y-visible">
-            {/* Single shared pagination container - OUTSIDE the map */}
-            <div className="swiper-custom-pagination flex justify-center items-center gap-4 mb-6"></div>
-
-            {categories.map((category) => (
+            {categories.map((category, index) => (
               <TabsContent key={category} value={category} className="mt-0">
+                {/* Unique pagination per category */}
+                <div
+                  className={`swiper-pagination-${index} flex justify-center items-center gap-4 mb-6`}
+                ></div>
+
                 <Swiper
+                  key={`swiper-${category}-${swiperKey}`}
                   modules={[Pagination, Navigation]}
                   pagination={{
                     clickable: true,
-                    el: ".swiper-custom-pagination",
+                    el: `.swiper-pagination-${index}`,
                     renderBullet: function (index, className) {
                       return (
                         '<span class="' +
@@ -302,7 +317,7 @@ const Experience = () => {
 
       {/* Custom Styles */}
       <style jsx global>{`
-        .swiper-custom-pagination {
+        [class*="swiper-pagination-"] {
           width: 100%;
           display: flex;
           justify-content: center;
