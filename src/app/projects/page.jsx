@@ -114,7 +114,7 @@ const Projects = () => {
     }, 100);
 
     return () => clearTimeout(timer);
-  }, [activeTab]);
+  }, []);
 
   return (
     <motion.section
