@@ -111,19 +111,6 @@ const Home = () => {
             quality={100}
             className="absolute top-[-10px] left-[30px] rounded-full opacity-100"
           />
-          {/* Overlay Gradient */}
-          <div
-            style={{
-              position: "absolute",
-              bottom: 0,
-              left: "0.8rem",
-              width: "100%",
-              height: "175px",
-              background:
-                "linear-gradient(to top, #0d120e 10%, rgba(13, 18, 14, 0.95) 20%, rgba(13, 18, 14, 0.85) 30%, rgba(13, 18, 14, 0.75) 45%, rgba(13, 18, 14, 0.6) 60%, rgba(13, 18, 14, 0.4) 75%, rgba(13, 18, 14, 0.2) 85%, rgba(13, 18, 14, 0.05) 95%, transparent 100%)",
-              borderRadius: "30%"
-            }}
-          />
         </div>
       </div>
     </motion.section>

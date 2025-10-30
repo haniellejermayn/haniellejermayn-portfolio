@@ -76,22 +76,6 @@ const About = () => {
               className="z-20 relative rounded-full -scale-x-100"
             />
 
-            {/* Overlay */}
-            <div
-              className="w-[420px] h-[60px] absolute left-0 top-[334px]
-              right-0 bg-gradient-to-t from-primary via-primary/90 z-30"
-              style={{
-                position: "absolute",
-                bottom: 0,
-                left: "0.8rem",
-                width: "100%",
-                height: "175px",
-                background:
-                  "linear-gradient(to top, #0d120e 10%, rgba(13, 18, 14, 0.95) 20%, rgba(13, 18, 14, 0.85) 30%, rgba(13, 18, 14, 0.75) 45%, rgba(13, 18, 14, 0.6) 60%, rgba(13, 18, 14, 0.4) 75%, rgba(13, 18, 14, 0.2) 85%, rgba(13, 18, 14, 0.05) 95%, transparent 100%)",
-                borderRadius: "45%"
-              }}
-            ></div>
-
             {/* Blob */}
             <div className="absolute top-[75px] -left-[30px] z-10">
               <Blob containerStyles="w-[420px] h-[420px]" />
