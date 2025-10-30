@@ -203,7 +203,7 @@ const Projects = () => {
                                 </p>
                                 {/* Tech */}
                                 <div className="my-2">
-                                  <p className="mb-2">Technologies Used</p>
+                                  <p className="mb-2">Tech Stack / Skills</p>
                                   <ul className="flex flex-wrap gap-3">
                                     {project.tech.map((item, index) => {
                                       return (
@@ -312,6 +312,18 @@ const Projects = () => {
         .swiper-button-prev,
         .swiper-button-next {
           display: none;
+        }
+
+        /* Hide scrollbar on mobile devices */
+        @media (max-width: 1279px) {
+          .scrollbar {
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+          }
+
+          .scrollbar::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+          }
         }
       `}</style>
     </motion.section>

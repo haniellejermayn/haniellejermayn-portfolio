@@ -364,6 +364,18 @@ const Experience = () => {
             display: none;
           }
         }
+
+        /* Hide scrollbar on mobile devices */
+        @media (max-width: 1279px) {
+          .scrollbar {
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+          }
+
+          .scrollbar::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+          }
+        }
       `}</style>
     </motion.section>
   );
