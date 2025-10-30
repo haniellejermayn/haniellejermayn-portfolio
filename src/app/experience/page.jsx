@@ -119,7 +119,6 @@ const experience = [
 const categories = ["Work/Internship", "Org Work"];
 
 const Experience = () => {
-  const [activeTab, setActiveTab] = useState(categories[0]);
   const [swiperReady, setSwiperReady] = useState(false);
 
   useEffect(() => {
@@ -129,7 +128,7 @@ const Experience = () => {
     }, 100);
 
     return () => clearTimeout(timer);
-  }, [activeTab]);
+  }, []);
 
   return (
     <motion.section
@@ -150,7 +149,6 @@ const Experience = () => {
         <Tabs
           defaultValue={categories[0]}
           className="w-full flex flex-col gap-2"
-          onValueChange={setActiveTab}
         >
           {/* Tabs List */}
           <TabsList className="max-h-[80px] flex flex-wrap justify-center items-center gap-4 h-full mb-0">
