@@ -1,6 +1,6 @@
 "use client";
 
-import { BiLogoLinkedin, BiLogoFacebook, BiLogoGithub } from "react-icons/bi";
+import { BiLogoLinkedin, BiLogoGithub } from "react-icons/bi";
 
 const socials = [
   {
@@ -10,10 +10,6 @@ const socials = [
   {
     icon: <BiLogoGithub />,
     path: "https://github.com/haniellejermayn"
-  },
-  {
-    icon: <BiLogoFacebook />,
-    path: "https://www.facebook.com/profile.php?id=100005266758624"
   }
 ];
 
