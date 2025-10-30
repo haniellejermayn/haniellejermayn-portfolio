@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -105,17 +104,6 @@ const projects = [
 const categories = ["Projects", "Research"];
 
 const Projects = () => {
-  const [swiperReady, setSwiperReady] = useState(false);
-
-  useEffect(() => {
-    // Small delay to ensure Swiper pagination renders
-    const timer = setTimeout(() => {
-      setSwiperReady(true);
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -131,7 +119,7 @@ const Projects = () => {
           My <span className="text-accent-light">Projects</span>
         </h2>
         {/* Tabs */}
-        <Tabs defaultValue="Projects" className="w-full flex flex-col gap-2 ">
+        <Tabs defaultValue="Projects" className="w-full flex flex-col gap-2">
           {/* Tabs List */}
           <TabsList className="max-h-[80px] flex flex-wrap justify-center items-center gap-4 h-full mb-0">
             {categories.map((category) => {
@@ -149,133 +137,124 @@ const Projects = () => {
           </TabsList>
           {/* Tabs Content */}
           <div className="h-[65vh] scrollbar scrollbar-thumb-accent scrollbar-track-accent/5 overflow-y-scroll xl:overflow-y-visible">
+            {/* Single shared pagination container - OUTSIDE the map */}
+            <div className="swiper-pagination-custom flex justify-center items-center gap-4 mb-6"></div>
+
             {categories.map((category) => {
               return (
                 <TabsContent key={category} value={category}>
-                  {/* Custom pagination container - positioned at the top, outside content */}
-                  <div className="swiper-pagination-custom flex justify-center items-center gap-4 mb-6"></div>
-
-                  <div
-                    className={`transition-opacity duration-300 ${
-                      swiperReady ? "opacity-100" : "opacity-0"
+                  <Swiper
+                    modules={[Pagination, Navigation]}
+                    pagination={{
+                      clickable: true,
+                      el: ".swiper-pagination-custom",
+                      renderBullet: function (index, className) {
+                        return (
+                          '<span class="' +
+                          className +
+                          '">' +
+                          (index + 1) +
+                          "</span>"
+                        );
+                      }
+                    }}
+                    navigation={{
+                      prevEl: ".swiper-button-prev-custom",
+                      nextEl: ".swiper-button-next-custom"
+                    }}
+                    className={`pb-4 ${
+                      projects.filter(
+                        (project) => project.category === category
+                      ).length > 1
+                        ? "cursor-grab active:cursor-grabbing"
+                        : ""
                     }`}
                   >
-                    <Swiper
-                      modules={[Pagination, Navigation]}
-                      onInit={() => setSwiperReady(true)}
-                      pagination={{
-                        clickable: true,
-                        el: ".swiper-pagination-custom",
-                        renderBullet: function (index, className) {
-                          return (
-                            '<span class="' +
-                            className +
-                            '">' +
-                            (index + 1) +
-                            "</span>"
-                          );
-                        }
-                      }}
-                      navigation={{
-                        prevEl: ".swiper-button-prev-custom",
-                        nextEl: ".swiper-button-next-custom"
-                      }}
-                      className={`pb-4 ${
-                        projects.filter(
-                          (project) => project.category === category
-                        ).length > 1
-                          ? "cursor-grab active:cursor-grabbing"
-                          : ""
-                      }`}
-                    >
-                      {projects
-                        .filter((project) => project.category === category)
-                        .map((project) => {
-                          return (
-                            <SwiperSlide key={project.id} className="h-full">
-                              <div className="flex flex-col md:flex-row gap-8 md:gap-12">
-                                {/* Project Info */}
-                                <div className="w-full flex flex-col gap-2 order-2 md:order-none">
-                                  {/* Title */}
-                                  <h3 className="text-2xl font-medium leading-[1.2]">
-                                    {project.title}
-                                  </h3>
-                                  {/* Description */}
-                                  <p className="text-white/80">
-                                    {project.description}
-                                  </p>
-                                  {/* Tech */}
-                                  <div className="my-2">
-                                    <p className="mb-2">Technologies Used</p>
-                                    <ul className="flex flex-wrap gap-3">
-                                      {project.tech.map((item, index) => {
-                                        return (
+                    {projects
+                      .filter((project) => project.category === category)
+                      .map((project) => {
+                        return (
+                          <SwiperSlide key={project.id} className="h-full">
+                            <div className="flex flex-col md:flex-row gap-8 md:gap-12">
+                              {/* Project Info */}
+                              <div className="w-full flex flex-col gap-2 order-2 md:order-none">
+                                {/* Title */}
+                                <h3 className="text-2xl font-medium leading-[1.2]">
+                                  {project.title}
+                                </h3>
+                                {/* Description */}
+                                <p className="text-white/80">
+                                  {project.description}
+                                </p>
+                                {/* Tech */}
+                                <div className="my-2">
+                                  <p className="mb-2">Technologies Used</p>
+                                  <ul className="flex flex-wrap gap-3">
+                                    {project.tech.map((item, index) => {
+                                      return (
+                                        <li
+                                          key={index}
+                                          className="flex items-center fap-4 bg-[#a8ffcb]/13 h-[28px] px-[14px] rounded-full"
+                                        >
+                                          {item}
+                                        </li>
+                                      );
+                                    })}
+                                  </ul>
+                                </div>
+                                {/* Awards */}
+                                {project.awards &&
+                                  project.awards.length > 0 && (
+                                    <div className="mb-4">
+                                      <p className="mb-2">Awards</p>
+                                      <ul className="list-disc pl-5">
+                                        {project.awards.map((award, index) => (
                                           <li
                                             key={index}
-                                            className="flex items-center fap-4 bg-[#a8ffcb]/13 h-[28px] px-[14px] rounded-full"
+                                            className="text-white/80"
                                           >
-                                            {item}
+                                            {award}
                                           </li>
-                                        );
-                                      })}
-                                    </ul>
-                                  </div>
-                                  {/* Awards */}
-                                  {project.awards &&
-                                    project.awards.length > 0 && (
-                                      <div className="mb-4">
-                                        <p className="mb-2">Awards</p>
-                                        <ul className="list-disc pl-5">
-                                          {project.awards.map(
-                                            (award, index) => (
-                                              <li
-                                                key={index}
-                                                className="text-white/80"
-                                              >
-                                                {award}
-                                              </li>
-                                            )
-                                          )}
-                                        </ul>
-                                      </div>
-                                    )}
-                                  {/* Buttons */}
-                                  <div className="mt-2 flex flex-row gap-2">
-                                    {project.link && (
-                                      <Link href={project.link}>
-                                        <button className="btn btn-sm btn-accent flex gap-2">
-                                          <MdArrowOutward className="text-xl" />
-                                          <span>Go to Project</span>
-                                        </button>
-                                      </Link>
-                                    )}
-                                    {project.github && (
-                                      <Link href={project.github}>
-                                        <button className="btn btn-sm btn-white flex gap-2">
-                                          <FaGithub className="text-xl" />
-                                          <span>GitHub Repo</span>
-                                        </button>
-                                      </Link>
-                                    )}
-                                  </div>
-                                </div>
-                                {/* Project Image */}
-                                <div className="w-full h-[20vh] md:h-[50vh] relative bg-[#1c1c22] shadow-lg border border-white/5 order-1 md:order-none rounded-lg overflow-hidden">
-                                  <Image
-                                    src={project.image}
-                                    alt={project.title}
-                                    fill
-                                    sizes="(max-width: 768px) 100vw, 50vw"
-                                    className="object-contain"
-                                    priority
-                                  />
+                                        ))}
+                                      </ul>
+                                    </div>
+                                  )}
+                                {/* Buttons */}
+                                <div className="mt-2 flex flex-row gap-2">
+                                  {project.link && (
+                                    <Link href={project.link}>
+                                      <button className="btn btn-sm btn-accent flex gap-2">
+                                        <MdArrowOutward className="text-xl" />
+                                        <span>Go to Project</span>
+                                      </button>
+                                    </Link>
+                                  )}
+                                  {project.github && (
+                                    <Link href={project.github}>
+                                      <button className="btn btn-sm btn-white flex gap-2">
+                                        <FaGithub className="text-xl" />
+                                        <span>GitHub Repo</span>
+                                      </button>
+                                    </Link>
+                                  )}
                                 </div>
                               </div>
-                            </SwiperSlide>
-                          );
-                        })}
-                    </Swiper>
-                  </div>
+                              {/* Project Image */}
+                              <div className="w-full h-[20vh] md:h-[50vh] relative bg-[#1c1c22] shadow-lg border border-white/5 order-1 md:order-none rounded-lg overflow-hidden">
+                                <Image
+                                  src={project.image}
+                                  alt={project.title}
+                                  fill
+                                  sizes="(max-width: 768px) 100vw, 50vw"
+                                  className="object-contain"
+                                  priority
+                                />
+                              </div>
+                            </div>
+                          </SwiperSlide>
+                        );
+                      })}
+                  </Swiper>
                 </TabsContent>
               );
             })}
