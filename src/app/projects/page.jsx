@@ -14,55 +14,81 @@ import Link from "next/link";
 import Image from "next/image";
 import { MdArrowOutward } from "react-icons/md";
 import { FaGithub } from "react-icons/fa";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const projects = [
   {
     id: 1,
-    category: "Personal",
-    title: "Portfolio",
-    description: "My responsive personal portfolio website built with Next.js.",
-    image: "/assets/projects/portfolio.png",
+    category: "Projects",
+    title: "[MOBICOM] Kasama - Household Task Management App (WIP)",
+    description:
+      "A Kotlin-based Android application for managing shared chores and notes within households, featuring offline-first architecture with SQLite and Firebase real-time synchronization.",
+    image: "/assets/projects/kasama.png",
     link: "",
-    github: "https://github.com/haniellejermayn/haniellejermayn-portfolio",
-    tech: ["React", "Next.js", "Tailwind CSS", "JavaScript", "HTML", "CSS"]
+    github: "https://github.com/haniellejermayn/kasama",
+    tech: ["Kotlin", "Android", "SQLite", "Firebase"]
   },
   {
     id: 2,
-    category: "Coursework",
+    category: "Projects",
+    title: "[STADVDB] IMDb OLAP Data Warehouse",
+    description:
+      "A dimensional data warehouse implementing star schema for IMDb dataset analysis. Built ETL pipelines with Python and Pandas to process 12GB of data, featuring OLAP operations and query optimization.",
+    image: "/assets/projects/imdb.png",
+    link: "",
+    github: "https://github.com/haniellejermayn/IMDb-OLAPApplication",
+    tech: ["Python", "MySQL", "Pandas", "HTML", "JavaScript"]
+  },
+  {
+    id: 3,
+    category: "Projects",
+    title: "Portfolio",
+    description:
+      "My responsive personal portfolio website built with Next.js, featuring smooth page transitions with Framer Motion and accessible UI components with shadcn/ui.",
+    image: "/assets/projects/portfolio.png",
+    link: "https://haniellejermayn-portfolio.vercel.app",
+    github: "https://github.com/haniellejermayn/haniellejermayn-portfolio",
+    tech: ["React", "Next.js", "Tailwind CSS", "JavaScript"]
+  },
+  {
+    id: 4,
+    category: "Projects",
     title: "[CCAPDEV] Connectify - Forum Web Application",
-    description: "A forum web application built with Express.js and MongoDB.",
+    description:
+      "A forum web application for user interactions and content management, built with Express.js backend and MongoDB database.",
     image: "/assets/projects/connectify.png",
     link: "https://connectify-y0tq.onrender.com",
     github: "https://github.com/strangeshands/APDEV-MCO",
     tech: ["Node.js", "Express.js", "MongoDB", "JavaScript", "HTML", "CSS"]
   },
   {
-    id: 3,
-    category: "Coursework",
+    id: 5,
+    category: "Projects",
     title: "[CCPROG3] Noir - Hotel Reservation System",
-    description: "A hotel reservation system built with Java.",
+    description:
+      "A hotel reservation system with graphical user interface built using Java and Java Swing.",
     image: "/assets/projects/noir.png",
     link: "",
     github: "https://github.com/haniellejermayn/HotelReservationSystem",
     tech: ["Java", "Java Swing"]
   },
   {
-    id: 4,
-    category: "Coursework",
+    id: 6,
+    category: "Projects",
     title: "[CCINFOM] Volt Vault - Electric Meter Management",
-    description: "A database application built with Python and MySQL.",
+    description:
+      "A database application for electric meter management built with Python Flask backend and MySQL database.",
     image: "/assets/projects/voltvault.png",
     link: "",
     github: "https://github.com/strangeshands/INFOM-DBAPP",
     tech: ["MySQL", "SQL", "Python", "Flask"]
   },
   {
-    id: 5,
+    id: 7,
     category: "Research",
     title:
       "Reduction of Traffic Congestion in España Boulevard using Graph Theory",
-    description: "My senior high school STEM research project.",
+    description:
+      "My senior high school STEM research project applying graph theory algorithms to analyze and propose solutions for traffic congestion.",
     image: "/assets/projects/res.png",
     link: "",
     github: "",
@@ -75,7 +101,7 @@ const projects = [
   }
 ];
 
-const categories = ["Personal", "Coursework", "Research"];
+const categories = ["Projects", "Research"];
 
 const Projects = () => {
   return (
@@ -93,7 +119,7 @@ const Projects = () => {
           My <span className="text-accent-light">Projects</span>
         </h2>
         {/* Tabs */}
-        <Tabs defaultValue="Personal" className="w-full flex flex-col gap-2 ">
+        <Tabs defaultValue="Projects" className="w-full flex flex-col gap-2 ">
           {/* Tabs List */}
           <TabsList className="max-h-[80px] flex flex-wrap justify-center items-center gap-4 h-full mb-0">
             {categories.map((category) => {

@@ -20,64 +20,66 @@ const experience = [
   {
     id: 1,
     category: "Work/Internship",
-    title: "Junior Blockchain Developer",
-    company: "Bids n Buys",
-    duration: "May 2025 - July 2025",
+    title: "Product Owner & Technical Lead",
+    company: "JJ Apartments (Independent Client Project)",
+    duration: "September 2025 - Present",
     description:
-      "Promoted from intern to junior developer, the role involved significantly expanding the backend by designing and implementing serverless TypeScript APIs integrated with MongoDB and Akaunting to support e-commerce invoicing processes. Responsibilities also included managing the Cardano node infrastructure, developing Haskell smart contracts, and ensuring reliable deployment and uptime via Docker Swarm on remote Linux servers. Additionally, I designed and developed a Merkle-proof verification system to securely record audit data on the Cardano blockchain, enhancing data integrity and tamper resistance for the platform’s transactions.",
-    logo: "/assets/experience/bidsnbuys.jpg",
+      "Led a 7-member Agile team, managing sprints and feature development for a property management application. Built a CI/CD pipeline and deployed Next.js, Spring Boot, and MySQL services across Vercel and Render. Delivered multiple new app features, strengthened authorization, and improved system reliability.",
+    logo: "/assets/experience/jjapartments.jpg",
     tech: [
-      "Cardano",
-      "Linux",
-      "Haskell",
-      "Docker",
-      "TypeScript",
-      "MongoDB",
-      "AngularJS",
-      "Jest"
+      "Next.js",
+      "Spring Boot",
+      "MySQL",
+      "Vercel",
+      "Render",
+      "GitHub CI/CD",
+      "Jira",
+      "Agile"
     ]
   },
   {
     id: 2,
     category: "Work/Internship",
-    title: "Blockchain Developer Intern",
-    company: "Bids n Buys",
-    duration: "February 2025 - May 2025",
+    title: "Impact Jobs Intern",
+    company: "Aboitiz Foundation Inc.",
+    duration: "August 2025 - October 2025",
     description:
-      "Developed a prototype crypto wallet interface using AngularJS with testing via Jest and Cypress. Contributed to the creation of serverless API endpoints and connected backend services to MongoDB to support platform functionality. Assisted in setting up Cardano nodes using Docker Swarm and maintained blockchain infrastructure hosted on remote Linux servers.",
-    logo: "/assets/experience/bidsnbuys.jpg",
-    tech: [
-      "Cardano",
-      "Linux",
-      "Haskell",
-      "Docker",
-      "TypeScript",
-      "MongoDB",
-      "AngularJS",
-      "Jest"
-    ]
+      "Coordinated beneficiary monitoring and labor market research for 275+ program graduates. Produced impact analysis and evaluator recommendations supporting workforce development initiatives. Designed brochures and handbooks used for program communication and outreach.",
+    logo: "/assets/experience/aboitiz.jpg",
+    tech: ["Research", "Data Analysis", "Program Evaluation", "Design"]
   },
   {
     id: 3,
     category: "Work/Internship",
-    title: "Intelligent Transportation Systems Lab Intern",
-    company: "University of the Philippines - Diliman",
-    duration: "June 13 - July 01, 2022",
+    title: "Quality Assurance (QA) & Developer",
+    company: "Sharelife Consumers Cooperative",
+    duration: "May 2025 - August 2025",
     description:
-      "Used LocalSim to model and analyze traffic flow at a high-congestion intersection in Palawan. Collected data from simulation outputs to evaluate and propose traffic alleviation scenarios. Contributed to a transport systems study under the Intelligent Transportation Systems Laboratory to support urban planning research.",
-    logo: "/assets/experience/upd.jpg",
-    tech: ["LocalSim"]
+      "Developed 100+ test cases and end-to-end tests using Cypress for DBMS admin application reliability. Fixed critical frontend bugs and implemented features using Next.js, TypeScript, and Supabase. Worked on client project via DLSU collaboration.",
+    logo: "/assets/experience/sharelife.jpg",
+    tech: ["Next.js", "TypeScript", "Supabase", "Cypress", "QA Testing"]
   },
   {
     id: 4,
     category: "Work/Internship",
-    title: "Summer Intern",
-    company: "Center for Applied Microelectronics and Programming, Inc.",
-    duration: "June 07 - June 18, 2021",
+    title: "Junior Blockchain Developer",
+    company: "Bids n Buys",
+    duration: "February 2025 - July 2025",
     description:
-      "Assisted in developing a full-stack web application during a structured internship. Focused on backend database integration and implemented robust input validation. Utilized NodeJS, SQL, and core web technologies to contribute functional features to the system.",
-    logo: "/assets/experience/camp.jpg",
-    tech: ["NodeJS", "SQL", "HTML", "CSS", "JavaScript"]
+      "Promoted from intern to junior developer. Built serverless TypeScript APIs on AWS Lambda integrated with MongoDB and Akaunting for e-commerce invoicing. Managed Cardano node infrastructure via Docker Swarm and developed a Merkle-proof verification system to record audit data on-chain. Created a crypto wallet prototype in Angular with comprehensive Jest and Cypress testing.",
+    logo: "/assets/experience/bidsnbuys.jpg",
+    tech: [
+      "Angular",
+      "TypeScript",
+      "AWS Lambda",
+      "MongoDB",
+      "Cardano",
+      "Docker",
+      "Haskell",
+      "Jest",
+      "Cypress",
+      "Linux"
+    ]
   },
   {
     id: 5,
@@ -97,7 +99,7 @@ const experience = [
     company: "DLSU - Microsoft Student Community",
     duration: "October 2023 - July 2024",
     description:
-      "Head organizer for “Build Your Professional Profile,” the org's largest flagship event. Responsible for end-to-end event planning, including scheduling, team delegation, speaker coordination, and logistics, while ensuring professional delivery aligned with Microsoft's branding.",
+      "Head organizer for 'Build Your Professional Profile,' the org's largest flagship event. Responsible for end-to-end event planning, including scheduling, team delegation, speaker coordination, and logistics, while ensuring professional delivery aligned with Microsoft's branding.",
     logo: "/assets/experience/msc.jpg",
     tech: []
   },
@@ -108,7 +110,7 @@ const experience = [
     company: "Lasallian Scholars Society",
     duration: "October 2023 - July 2024",
     description:
-      "Managed event documentation and logistical needs for org-wide activities. Authored detailed articles summarizing organizational events for the group’s official newsletter ChronicLSS, showcasing both technical writing and organizational support capabilities.",
+      "Managed event documentation and logistical needs for org-wide activities. Authored detailed articles summarizing organizational events for the group's official newsletter ChronicLSS, showcasing both technical writing and organizational support capabilities.",
     logo: "/assets/experience/lss.jpg",
     tech: []
   }
@@ -126,11 +128,11 @@ const Experience = () => {
         opacity: 1,
         transition: { delay: 2.4, duration: 0.4, ease: "easeIn" }
       }}
-      className="min-h-screen flex items-start 2xl:items-center"
+      className="min-h-screen pb-8"
     >
-      <div className="container mx-auto flex flex-col">
+      <div className="container mx-auto flex flex-col max-w-7xl w-full">
         {/* Header */}
-        <h2 className="h2 mb-2 text-4xl font-bold">
+        <h2 className="h2 mb-6 text-3xl lg:text-4xl font-bold">
           My <span className="text-accent-light">Experience</span>
         </h2>
 
@@ -141,13 +143,13 @@ const Experience = () => {
           onValueChange={setActiveTab}
         >
           {/* Tabs List */}
-          <TabsList className="flex justify-center items-center gap-4 mb-8 flex-wrap">
+          <TabsList className="flex justify-center items-center gap-4 mb-6 flex-wrap">
             {categories.map((category) => (
               <TabsTrigger
                 key={category}
                 value={category}
                 className="capitalize border border-white/10 data-[state=active]:bg-accent 
-                data-[state=active]:border-accent h-[48px] px-6 rounded-full cursor-pointer
+                data-[state=active]:border-accent h-[44px] px-5 rounded-full cursor-pointer
                 hover:bg-white/5 transition-all"
               >
                 {category}
@@ -164,7 +166,8 @@ const Experience = () => {
                   pagination={{
                     clickable: true,
                     bulletClass: "swiper-pagination-bullet",
-                    bulletActiveClass: "swiper-pagination-bullet-active"
+                    bulletActiveClass: "swiper-pagination-bullet-active",
+                    el: ".swiper-custom-pagination"
                   }}
                   navigation={{
                     prevEl: ".swiper-button-prev",
@@ -172,17 +175,23 @@ const Experience = () => {
                   }}
                   spaceBetween={30}
                   slidesPerView={1}
-                  className="relative pb-16 cursor-grab active:cursor-grabbing"
+                  className="relative cursor-grab active:cursor-grabbing"
                 >
                   {experience
                     .filter((item) => item.category === category)
                     .map((item) => (
                       <SwiperSlide key={item.id}>
-                        <div className="flex items-center justify-center bg-[#1c1c22] rounded-xl p-8 shadow-lg border border-white/5 overflow-hidden min-h-95">
-                          <div className="flex flex-col lg:flex-row gap-8">
+                        <div
+                          className={`flex items-center justify-center bg-[#1c1c22] rounded-xl p-6 lg:p-7 shadow-lg border border-white/5 overflow-hidden ${
+                            category === "Work/Internship"
+                              ? "min-h-[360px]"
+                              : ""
+                          }`}
+                        >
+                          <div className="flex flex-col lg:flex-row gap-6">
                             {/* Left Column - Logo */}
                             <div className="lg:w-1/4 lg:flex-col lg:items-center flex justify-center items-start">
-                              <div className="w-32 h-32 relative rounded-xl overflow-hidden bg-white/5 p-4">
+                              <div className="w-28 h-28 lg:w-32 lg:h-32 relative rounded-xl overflow-hidden bg-white/5 p-3">
                                 <Image
                                   src={item.logo}
                                   alt={item.company}
@@ -194,11 +203,11 @@ const Experience = () => {
 
                             {/* Right Column - Details */}
                             <div className="lg:w-3/4">
-                              <h3 className="text-2xl font-bold text-white mb-2">
+                              <h3 className="text-xl lg:text-2xl font-bold text-white mb-2">
                                 {item.title}
                               </h3>
 
-                              <div className="flex flex-col sm:flex-row gap-4 mb-4 text-white/70">
+                              <div className="flex flex-col sm:flex-row gap-3 mb-3 text-white/70 text-sm">
                                 <div className="flex items-center gap-2">
                                   <FaBuilding className="text-accent-light" />
                                   <span className="leading-[1.2]">
@@ -213,17 +222,17 @@ const Experience = () => {
                                 </div>
                               </div>
 
-                              <div className="mb-6">
-                                <p className="text-white/80 leading-relaxed">
+                              <div className="mb-4">
+                                <p className="text-white/80 leading-relaxed text-sm lg:text-base">
                                   {item.description}
                                 </p>
                               </div>
 
                               {item.tech && item.tech.length > 0 && (
                                 <div>
-                                  <div className="flex items-center gap-2 mb-3">
-                                    <BsTools className="text-accent-light" />
-                                    <h4 className="font-medium">
+                                  <div className="flex items-center gap-2 mb-2">
+                                    <BsTools className="text-accent-light text-sm" />
+                                    <h4 className="font-medium text-sm">
                                       Technologies
                                     </h4>
                                   </div>
@@ -232,7 +241,7 @@ const Experience = () => {
                                     {item.tech.map((tech, index) => (
                                       <span
                                         key={index}
-                                        className="bg-accent/10 text-accent-light px-3 py-1 rounded-full text-sm"
+                                        className="bg-accent/10 text-accent-light px-2.5 py-1 rounded-full text-xs lg:text-sm"
                                       >
                                         {tech}
                                       </span>
@@ -280,6 +289,9 @@ const Experience = () => {
                     </button>
                   </div>
                 </Swiper>
+
+                {/* Fixed Pagination */}
+                <div className="swiper-custom-pagination flex justify-center mt-5"></div>
               </div>
             </TabsContent>
           ))}

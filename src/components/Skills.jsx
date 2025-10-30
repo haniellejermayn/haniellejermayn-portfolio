@@ -15,10 +15,23 @@ import {
   BiLogoGit,
   BiLogoPython,
   BiLogoMongodb,
-  BiLogoGoogle,
-  BiLogoMicrosoft
+  BiLogoAws,
+  BiLogoSpringBoot,
+  BiLogoGithub
 } from "react-icons/bi";
-import { SiCardano, SiMysql, SiHaskell } from "react-icons/si";
+import {
+  SiCardano,
+  SiMysql,
+  SiHaskell,
+  SiCypress,
+  SiPostman,
+  SiJira,
+  SiSupabase,
+  SiKotlin,
+  SiFirebase,
+  SiSqlite,
+  SiExpress
+} from "react-icons/si";
 import { TbSql } from "react-icons/tb";
 import { FaCopyright } from "react-icons/fa";
 
@@ -35,18 +48,21 @@ const skills = [
     items: [
       { icon: <RiReactjsFill />, name: "React" },
       { icon: <RiNextjsFill />, name: "Next.js" },
-      { icon: <RiHtml5Fill />, name: "HTML5" },
-      { icon: <RiCss3Fill />, name: "CSS3" },
+      { icon: <RiAngularjsFill />, name: "Angular" },
       { icon: <RiTailwindCssFill />, name: "Tailwind CSS" },
-      { icon: <RiAngularjsFill />, name: "Angular" }
+      { icon: <RiHtml5Fill />, name: "HTML5" },
+      { icon: <RiCss3Fill />, name: "CSS3" }
     ]
   },
   {
     category: "Backend",
     items: [
       { icon: <RiNodejsFill />, name: "Node.js" },
+      { icon: <SiExpress />, name: "Express.js" },
+      { icon: <BiLogoSpringBoot />, name: "Spring Boot" },
       { icon: <BiLogoMongodb />, name: "MongoDB" },
-      { icon: <SiMysql />, name: "MySQL" }
+      { icon: <SiMysql />, name: "MySQL" },
+      { icon: <SiSupabase />, name: "Supabase" }
     ]
   },
   {
@@ -56,6 +72,7 @@ const skills = [
       { icon: <BiLogoTypescript />, name: "TypeScript" },
       { icon: <BiLogoPython />, name: "Python" },
       { icon: <RiJavaFill />, name: "Java" },
+      { icon: <SiKotlin />, name: "Kotlin" },
       { icon: <TbSql />, name: "SQL" },
       { icon: <FaCopyright />, name: "C" },
       { icon: <SiHaskell />, name: "Haskell" }
@@ -65,15 +82,13 @@ const skills = [
     category: "Tools & Technologies",
     items: [
       { icon: <BiLogoGit />, name: "Git" },
-      { icon: <SiCardano />, name: "Cardano" },
-      { icon: <BiLogoDocker />, name: "Docker" }
-    ]
-  },
-  {
-    category: "Office Applications",
-    items: [
-      { icon: <BiLogoGoogle />, name: "Google Workspace" },
-      { icon: <BiLogoMicrosoft />, name: "Microsoft Office" }
+      { icon: <BiLogoGithub />, name: "GitHub CI/CD" },
+      { icon: <BiLogoDocker />, name: "Docker" },
+      { icon: <BiLogoAws />, name: "AWS Lambda" },
+      { icon: <SiCypress />, name: "Cypress" },
+      { icon: <SiPostman />, name: "Postman" },
+      { icon: <SiJira />, name: "Jira" },
+      { icon: <SiCardano />, name: "Cardano" }
     ]
   }
 ];
