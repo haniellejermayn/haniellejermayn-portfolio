@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -120,6 +120,16 @@ const categories = ["Work/Internship", "Org Work"];
 
 const Experience = () => {
   const [activeTab, setActiveTab] = useState(categories[0]);
+  const [swiperReady, setSwiperReady] = useState(false);
+
+  useEffect(() => {
+    // Small delay to ensure Swiper pagination renders
+    const timer = setTimeout(() => {
+      setSwiperReady(true);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, [activeTab]);
 
   return (
     <motion.section
@@ -158,146 +168,153 @@ const Experience = () => {
           </TabsList>
 
           {/* Tabs Content with Scrollable Container */}
-          <div className="h-[60vh] scrollbar scrollbar-thumb-accent scrollbar-track-accent/5 overflow-y-scroll xl:overflow-y-visible">
+          <div className="h-[65vh] scrollbar scrollbar-thumb-accent scrollbar-track-accent/5 overflow-y-scroll xl:overflow-y-visible">
             {categories.map((category) => (
               <TabsContent key={category} value={category} className="mt-0">
                 {/* Custom pagination container */}
                 <div className="swiper-custom-pagination flex justify-center items-center gap-4 mb-6"></div>
 
-                <Swiper
-                  modules={[Pagination, Navigation]}
-                  pagination={{
-                    clickable: true,
-                    el: ".swiper-custom-pagination",
-                    renderBullet: function (index, className) {
-                      return (
-                        '<span class="' +
-                        className +
-                        '">' +
-                        (index + 1) +
-                        "</span>"
-                      );
-                    }
-                  }}
-                  navigation={{
-                    prevEl: ".swiper-button-prev",
-                    nextEl: ".swiper-button-next"
-                  }}
-                  spaceBetween={30}
-                  slidesPerView={1}
-                  className={`pb-4 ${
-                    experience.filter((item) => item.category === category)
-                      .length > 1
-                      ? "cursor-grab active:cursor-grabbing"
-                      : ""
+                <div
+                  className={`transition-opacity duration-300 ${
+                    swiperReady ? "opacity-100" : "opacity-0"
                   }`}
                 >
-                  {experience
-                    .filter((item) => item.category === category)
-                    .map((item) => (
-                      <SwiperSlide key={item.id}>
-                        <div className="flex items-center justify-center bg-[#1c1c22] rounded-xl p-6 lg:p-7 shadow-lg border border-white/5 overflow-hidden">
-                          <div className="flex flex-col lg:flex-row gap-6">
-                            {/* Left Column - Logo */}
-                            <div className="lg:w-1/4 lg:flex-col lg:items-center flex justify-center items-start">
-                              <div className="w-28 h-28 lg:w-32 lg:h-32 relative rounded-xl overflow-hidden bg-white/5 p-3">
-                                <Image
-                                  src={item.logo}
-                                  alt={item.company}
-                                  fill
-                                  className="object-contain p-2 rounded-xl"
-                                />
-                              </div>
-                            </div>
-
-                            {/* Right Column - Details */}
-                            <div className="lg:w-3/4">
-                              <h3 className="text-xl lg:text-2xl font-bold text-white mb-2">
-                                {item.title}
-                              </h3>
-
-                              <div className="flex flex-col sm:flex-row gap-3 mb-3 text-white/70 text-sm">
-                                <div className="flex items-center gap-2">
-                                  <FaBuilding className="text-accent-light" />
-                                  <span className="leading-[1.2]">
-                                    {item.company}
-                                  </span>
+                  <Swiper
+                    modules={[Pagination, Navigation]}
+                    onInit={() => setSwiperReady(true)}
+                    pagination={{
+                      clickable: true,
+                      el: ".swiper-custom-pagination",
+                      renderBullet: function (index, className) {
+                        return (
+                          '<span class="' +
+                          className +
+                          '">' +
+                          (index + 1) +
+                          "</span>"
+                        );
+                      }
+                    }}
+                    navigation={{
+                      prevEl: ".swiper-button-prev",
+                      nextEl: ".swiper-button-next"
+                    }}
+                    spaceBetween={30}
+                    slidesPerView={1}
+                    className={`pb-4 ${
+                      experience.filter((item) => item.category === category)
+                        .length > 1
+                        ? "cursor-grab active:cursor-grabbing"
+                        : ""
+                    }`}
+                  >
+                    {experience
+                      .filter((item) => item.category === category)
+                      .map((item) => (
+                        <SwiperSlide key={item.id}>
+                          <div className="flex items-center justify-center bg-[#1c1c22] rounded-xl p-6 lg:p-7 shadow-lg border border-white/5 overflow-hidden">
+                            <div className="flex flex-col lg:flex-row gap-6">
+                              {/* Left Column - Logo */}
+                              <div className="lg:w-1/4 lg:flex-col lg:items-center flex justify-center items-start">
+                                <div className="w-28 h-28 lg:w-32 lg:h-32 relative rounded-xl overflow-hidden bg-white/5 p-3">
+                                  <Image
+                                    src={item.logo}
+                                    alt={item.company}
+                                    fill
+                                    className="object-contain p-2 rounded-xl"
+                                  />
                                 </div>
-                                <div className="flex items-center gap-2">
-                                  <IoCalendarOutline className="text-accent-light" />
-                                  <span className="leading-[1.2]">
-                                    {item.duration}
-                                  </span>
-                                </div>
                               </div>
 
-                              <div className="mb-4">
-                                <p className="text-white/80 leading-relaxed text-sm lg:text-base">
-                                  {item.description}
-                                </p>
-                              </div>
+                              {/* Right Column - Details */}
+                              <div className="lg:w-3/4">
+                                <h3 className="text-xl lg:text-2xl font-bold text-white mb-2">
+                                  {item.title}
+                                </h3>
 
-                              {item.tech && item.tech.length > 0 && (
-                                <div>
-                                  <div className="flex items-center gap-2 mb-2">
-                                    <BsTools className="text-accent-light text-sm" />
-                                    <h4 className="font-medium text-sm">
-                                      Tech Stack / Skills
-                                    </h4>
+                                <div className="flex flex-col sm:flex-row gap-3 mb-3 text-white/70 text-sm">
+                                  <div className="flex items-center gap-2">
+                                    <FaBuilding className="text-accent-light" />
+                                    <span className="leading-[1.2]">
+                                      {item.company}
+                                    </span>
                                   </div>
-
-                                  <div className="flex flex-wrap gap-2">
-                                    {item.tech.map((tech, index) => (
-                                      <span
-                                        key={index}
-                                        className="bg-accent/10 text-accent-light px-2.5 py-1 rounded-full text-xs lg:text-sm"
-                                      >
-                                        {tech}
-                                      </span>
-                                    ))}
+                                  <div className="flex items-center gap-2">
+                                    <IoCalendarOutline className="text-accent-light" />
+                                    <span className="leading-[1.2]">
+                                      {item.duration}
+                                    </span>
                                   </div>
                                 </div>
-                              )}
+
+                                <div className="mb-4">
+                                  <p className="text-white/80 leading-relaxed text-sm lg:text-base">
+                                    {item.description}
+                                  </p>
+                                </div>
+
+                                {item.tech && item.tech.length > 0 && (
+                                  <div>
+                                    <div className="flex items-center gap-2 mb-2">
+                                      <BsTools className="text-accent-light text-sm" />
+                                      <h4 className="font-medium text-sm">
+                                        Tech Stack / Skills
+                                      </h4>
+                                    </div>
+
+                                    <div className="flex flex-wrap gap-2">
+                                      {item.tech.map((tech, index) => (
+                                        <span
+                                          key={index}
+                                          className="bg-accent/10 text-accent-light px-2.5 py-1 rounded-full text-xs lg:text-sm"
+                                        >
+                                          {tech}
+                                        </span>
+                                      ))}
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </SwiperSlide>
-                    ))}
+                        </SwiperSlide>
+                      ))}
 
-                  {/* Custom Navigation */}
-                  <div className="flex justify-between absolute top-1/2 -translate-y-1/2 w-full z-10 px-4">
-                    <button className="swiper-button-prev w-10 h-10 rounded-full bg-accent/20 hover:bg-accent/40 flex items-center justify-center text-white transition-all">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="m15 18-6-6 6-6" />
-                      </svg>
-                    </button>
-                    <button className="swiper-button-next w-10 h-10 rounded-full bg-accent/20 hover:bg-accent/40 flex items-center justify-center text-white transition-all">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="m9 18 6-6-6-6" />
-                      </svg>
-                    </button>
-                  </div>
-                </Swiper>
+                    {/* Custom Navigation */}
+                    <div className="flex justify-between absolute top-1/2 -translate-y-1/2 w-full z-10 px-4">
+                      <button className="swiper-button-prev w-10 h-10 rounded-full bg-accent/20 hover:bg-accent/40 flex items-center justify-center text-white transition-all">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="m15 18-6-6 6-6" />
+                        </svg>
+                      </button>
+                      <button className="swiper-button-next w-10 h-10 rounded-full bg-accent/20 hover:bg-accent/40 flex items-center justify-center text-white transition-all">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="m9 18 6-6-6-6" />
+                        </svg>
+                      </button>
+                    </div>
+                  </Swiper>
+                </div>
               </TabsContent>
             ))}
           </div>
