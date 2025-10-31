@@ -188,7 +188,7 @@ const Experience = () => {
             ))}
           </TabsList>
 
-          <div className="h-[65vh] scrollbar scrollbar-thumb-accent scrollbar-track-accent/5 overflow-y-scroll xl:overflow-y-visible pb-6 xl:pb-0">
+          <div className="h-[65vh] scrollbar scrollbar-thumb-accent scrollbar-track-accent/5 overflow-y-scroll xl:overflow-y-visible pb-8 xl:pb-0">
             {categories.map((category, index) => {
               const slides = experience.filter(
                 (item) => item.category === category
