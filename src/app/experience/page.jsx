@@ -65,7 +65,7 @@ const experience = [
     company: "Bids n Buys",
     duration: "February 2025 - July 2025",
     description:
-      "Promoted from intern to junior developer. Built serverless TypeScript APIs on AWS Lambda integrated with MongoDB and Akaunting for e-commerce invoicing. Managed Cardano node infrastructure via Docker Swarm and developed a Merkle-proof verification system to record audit data on-chain. Created a crypto wallet prototype in Angular with comprehensive Jest and Cypress testing.",
+      "Promoted from intern to junior developer. Built serverless TypeScript APIs on AWS Lambda with MongoDB and Akaunting integration. Managed Cardano node infrastructure via Docker Swarm and developed Merkle-proof verification for on-chain audit data. Prototyped Angular crypto wallet with Jest and Cypress tests.",
     logo: "/assets/experience/bidsnbuys.jpg",
     tech: [
       "Angular",
@@ -174,7 +174,7 @@ const Experience = () => {
           defaultValue={categories[0]}
           className="w-full flex flex-col gap-0"
         >
-          <TabsList className="max-h-[80px] flex flex-wrap justify-center items-center gap-4 h-full mb-0">
+          <TabsList className="h-auto min-h-[80px] flex flex-wrap justify-center items-center gap-4 mb-0">
             {categories.map((category) => (
               <TabsTrigger
                 key={category}
@@ -200,7 +200,7 @@ const Experience = () => {
               return (
                 <TabsContent key={category} value={category} className="mt-0">
                   {/* Pagination row with prev, bullets, next */}
-                  <div className="flex justify-center items-center mb-6">
+                  <div className="flex justify-center items-center mb-5 z-500">
                     <div className="flex items-center gap-3">
                       {/* Prev */}
                       <button
@@ -264,7 +264,7 @@ const Experience = () => {
                     navigation={false}
                     spaceBetween={30}
                     slidesPerView={1}
-                    className={`pb-4 ${slidesCount > 1 ? "cursor-grab active:cursor-grabbing" : ""}`}
+                    className={`pb-4 ${slidesCount > 1 ? "cursor-grab active:cursor-grabbing" : ""} min-h-[420px] lg:min-h-[370px]`}
                     onSlideChange={(swiper) => {
                       setActiveIndexes((prev) => ({
                         ...prev,
@@ -278,7 +278,7 @@ const Experience = () => {
                   >
                     {slides.map((item) => (
                       <SwiperSlide key={item.id}>
-                        <div className="flex items-center justify-center bg-[#1c1c22] rounded-xl p-6 lg:p-7 shadow-lg border border-white/5 overflow-hidden">
+                        <div className="flex items-center justify-center bg-[#1c1c22] rounded-xl p-6 lg:p-7 shadow-lg border border-white/5 overflow-hidden min-h-[380px] lg:min-h-[330px]">
                           <div className="flex flex-col lg:flex-row gap-6">
                             <div className="lg:w-1/4 lg:flex-col lg:items-center flex justify-center items-start">
                               <div className="w-28 h-28 lg:w-32 lg:h-32 relative rounded-xl overflow-hidden bg-white/5 p-3">

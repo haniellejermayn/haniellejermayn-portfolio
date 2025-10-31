@@ -15,7 +15,7 @@ import {
   BiLogoGit,
   BiLogoPython,
   BiLogoMongodb,
-  BiLogoAws,
+  /*BiLogoAws,*/
   BiLogoSpringBoot,
   BiLogoGithub
 } from "react-icons/bi";
@@ -83,7 +83,7 @@ const skills = [
       { icon: <BiLogoGit />, name: "Git" },
       { icon: <BiLogoGithub />, name: "GitHub Actions (CI/CD)" },
       { icon: <BiLogoDocker />, name: "Docker" },
-      { icon: <BiLogoAws />, name: "AWS Lambda" },
+      /*{ icon: <BiLogoAws />, name: "AWS Lambda" },*/
       { icon: <SiCypress />, name: "Cypress" },
       { icon: <SiPostman />, name: "Postman" },
       { icon: <SiJira className="scale-[0.9]" />, name: "Jira" },
