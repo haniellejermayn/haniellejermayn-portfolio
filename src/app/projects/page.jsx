@@ -190,7 +190,7 @@ const Projects = () => {
                       <button
                         onClick={() => swiperRefs.current[index]?.slidePrev()}
                         disabled={active === 0}
-                        className="text-lg px-3 py-1 rounded-full bg-accent/20 text-white hover:bg-accent/40 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                        className="text-lg px-3 py-1 rounded-full bg-accent/20 text-white cursor-pointer hover:bg-accent/40 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
                       >
                         &lt;
                       </button>
@@ -214,7 +214,7 @@ const Projects = () => {
                                 ${
                                   slideIndex === active
                                     ? "bg-accent-light text-black font-semibold"
-                                    : "bg-white/20 text-white"
+                                    : "bg-white/20 text-white cursor-pointer"
                                 }`}
                               layout
                             >
@@ -235,7 +235,7 @@ const Projects = () => {
                         disabled={
                           active === slidesCount - 1 || slidesCount === 0
                         }
-                        className="text-lg px-3 py-1 rounded-full bg-accent/20 text-white hover:bg-accent/40 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                        className="text-lg px-3 py-1 rounded-full bg-accent/20 text-white cursor-pointer hover:bg-accent/40 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
                       >
                         &gt;
                       </button>
