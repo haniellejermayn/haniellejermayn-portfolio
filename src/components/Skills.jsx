@@ -28,8 +28,7 @@ import {
   SiJira,
   SiSupabase,
   SiKotlin,
-  SiFirebase,
-  SiSqlite,
+  SiC,
   SiExpress
 } from "react-icons/si";
 import { TbSql } from "react-icons/tb";
@@ -62,7 +61,7 @@ const skills = [
       { icon: <BiLogoSpringBoot />, name: "Spring Boot" },
       { icon: <BiLogoMongodb />, name: "MongoDB" },
       { icon: <SiMysql />, name: "MySQL" },
-      { icon: <SiSupabase />, name: "Supabase" }
+      { icon: <SiSupabase className="scale-[0.85]" />, name: "Supabase" }
     ]
   },
   {
@@ -72,9 +71,9 @@ const skills = [
       { icon: <BiLogoTypescript />, name: "TypeScript" },
       { icon: <BiLogoPython />, name: "Python" },
       { icon: <RiJavaFill />, name: "Java" },
-      { icon: <SiKotlin />, name: "Kotlin" },
+      { icon: <SiKotlin className="scale-[0.85]" />, name: "Kotlin" },
       { icon: <TbSql />, name: "SQL" },
-      { icon: <FaCopyright />, name: "C" },
+      { icon: <SiC className="scale-[0.9]" />, name: "C" },
       { icon: <SiHaskell />, name: "Haskell" }
     ]
   },
@@ -87,7 +86,7 @@ const skills = [
       { icon: <BiLogoAws />, name: "AWS Lambda" },
       { icon: <SiCypress />, name: "Cypress" },
       { icon: <SiPostman />, name: "Postman" },
-      { icon: <SiJira />, name: "Jira" },
+      { icon: <SiJira className="scale-[0.9]" />, name: "Jira" },
       { icon: <SiCardano />, name: "Cardano" }
     ]
   }
