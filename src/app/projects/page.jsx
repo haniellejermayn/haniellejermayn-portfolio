@@ -158,7 +158,7 @@ const Projects = () => {
 
         <Tabs
           defaultValue={categories[0]}
-          className="w-full flex flex-col gap-2"
+          className="w-full flex flex-col gap-0"
         >
           <TabsList className="max-h-[80px] flex flex-wrap justify-center items-center gap-4 h-full mb-0">
             {categories.map((category) => (

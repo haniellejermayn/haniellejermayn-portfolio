@@ -172,7 +172,7 @@ const Experience = () => {
 
         <Tabs
           defaultValue={categories[0]}
-          className="w-full flex flex-col gap-2"
+          className="w-full flex flex-col gap-0"
         >
           <TabsList className="max-h-[80px] flex flex-wrap justify-center items-center gap-4 h-full mb-0">
             {categories.map((category) => (
@@ -200,7 +200,7 @@ const Experience = () => {
               return (
                 <TabsContent key={category} value={category} className="mt-0">
                   {/* Pagination row with prev, bullets, next */}
-                  <div className="flex justify-center items-center mb-6 z-500">
+                  <div className="flex justify-center items-center mb-6">
                     <div className="flex items-center gap-3">
                       {/* Prev */}
                       <button
