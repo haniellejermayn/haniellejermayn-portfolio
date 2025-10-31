@@ -200,7 +200,7 @@ const Experience = () => {
               return (
                 <TabsContent key={category} value={category} className="mt-0">
                   {/* Pagination row with prev, bullets, next */}
-                  <div className="flex justify-center items-center mb-6">
+                  <div className="flex justify-center items-center mb-6 z-500">
                     <div className="flex items-center gap-3">
                       {/* Prev */}
                       <button

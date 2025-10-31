@@ -1,13 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -37,7 +36,7 @@ const projects = [
     image: "/assets/projects/imdb.png",
     link: "",
     github: "https://github.com/haniellejermayn/IMDb-OLAPApplication",
-    tech: ["MySQL", "Python", "Pandas", "Flask", "HTML", "JavaScript"]
+    tech: ["MySQL", "Python", "Pandas", "Flask", "JavaScript"]
   },
   {
     id: 3,
@@ -104,17 +103,44 @@ const projects = [
 
 const categories = ["Projects", "Research"];
 
+// Match Experience page behavior
+const MAX_VISIBLE = 5;
+
 const Projects = () => {
   const [swiperKey, setSwiperKey] = useState(0);
 
-  useEffect(() => {
-    // Wait for Framer Motion animation to complete (2.4s + 0.4s = 2.8s)
-    const timer = setTimeout(() => {
-      setSwiperKey(1); // Force Swiper to re-initialize
-    }, 3000);
+  // active slide index per category
+  const [activeIndexes, setActiveIndexes] = useState({});
+  // hold swiper instances per category
+  const swiperRefs = useRef({});
 
+  useEffect(() => {
+    const timer = setTimeout(() => setSwiperKey(1), 3000);
     return () => clearTimeout(timer);
   }, []);
+
+  // helper to compute bullet window [start, end]
+  const getVisibleRange = (count, active) => {
+    if (count <= MAX_VISIBLE) return [0, count - 1];
+    let start = active - Math.floor(MAX_VISIBLE / 2);
+    if (start < 0) start = 0;
+    if (start + MAX_VISIBLE - 1 > count - 1) start = count - MAX_VISIBLE;
+    const end = start + MAX_VISIBLE - 1;
+    return [start, end];
+  };
+
+  // keep parity with Experience: force Swiper pagination re-render if needed
+  useEffect(() => {
+    Object.keys(activeIndexes).forEach((i) => {
+      const swiperInstance = document
+        .querySelector(`.swiper-pagination-${i}`)
+        ?.closest(".swiper")?.swiper;
+      if (swiperInstance) {
+        swiperInstance.pagination?.render?.();
+        swiperInstance.pagination?.update?.();
+      }
+    });
+  }, [activeIndexes]);
 
   return (
     <motion.section
@@ -126,149 +152,189 @@ const Projects = () => {
       className="min-h-screen flex items-start py-0"
     >
       <div className="container mx-auto w-full h-screen flex flex-col mt-2 2xl:justify-center">
-        {/* Header */}
         <h2 className="h2 mb-2 max-w-[600px]">
           My <span className="text-accent-light">Projects</span>
         </h2>
-        {/* Tabs */}
-        <Tabs defaultValue="Projects" className="w-full flex flex-col gap-2">
-          {/* Tabs List */}
+
+        <Tabs
+          defaultValue={categories[0]}
+          className="w-full flex flex-col gap-2"
+        >
           <TabsList className="max-h-[80px] flex flex-wrap justify-center items-center gap-4 h-full mb-0">
-            {categories.map((category) => {
-              return (
-                <TabsTrigger
-                  key={category}
-                  value={category}
-                  className="capitalize border border-white/10 data-[state=active]:bg-accent 
-                  data-[state=active]:border-accent h-[48px] px-6 rounded-full cursor-pointer"
-                >
-                  {category}
-                </TabsTrigger>
-              );
-            })}
+            {categories.map((category) => (
+              <TabsTrigger
+                key={category}
+                value={category}
+                className="capitalize border border-white/10 data-[state=active]:bg-accent 
+                  data-[state=active]:border-accent h-[48px] px-6 rounded-full cursor-pointer
+                  hover:bg-white/5 transition-all"
+              >
+                {category}
+              </TabsTrigger>
+            ))}
           </TabsList>
-          {/* Tabs Content */}
+
           <div className="h-[65vh] scrollbar scrollbar-thumb-accent scrollbar-track-accent/5 overflow-y-scroll xl:overflow-y-visible">
             {categories.map((category, index) => {
+              const slides = projects.filter((p) => p.category === category);
+              const slidesCount = slides.length;
+              const active = activeIndexes[index] ?? 0;
+              const [start, end] = getVisibleRange(slidesCount, active);
+
               return (
-                <TabsContent key={category} value={category}>
-                  {/* Unique pagination per category */}
-                  <div
-                    className={`swiper-pagination-${index} flex justify-center items-center gap-4 mb-6`}
-                  ></div>
+                <TabsContent key={category} value={category} className="mt-0">
+                  {/* Pagination row with prev, bullets, next (match Experience) */}
+                  <div className="flex justify-center items-center mb-6 z-500">
+                    <div className="flex items-center gap-3">
+                      {/* Prev */}
+                      <button
+                        onClick={() => swiperRefs.current[index]?.slidePrev()}
+                        disabled={active === 0}
+                        className="text-lg px-3 py-1 rounded-full bg-accent/20 text-white hover:bg-accent/40 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                      >
+                        &lt;
+                      </button>
+
+                      {/* Bullets */}
+                      <div className="flex items-center justify-center gap-2">
+                        {start > 0 && (
+                          <span className="text-white/50 select-none px-1">
+                            ...
+                          </span>
+                        )}
+                        {Array.from({ length: end - start + 1 }, (_, i) => {
+                          const slideIndex = start + i;
+                          return (
+                            <motion.button
+                              key={slideIndex}
+                              onClick={() =>
+                                swiperRefs.current[index]?.slideTo(slideIndex)
+                              }
+                              className={`w-7 h-7 rounded-full flex items-center justify-center text-sm transition-all
+                                ${
+                                  slideIndex === active
+                                    ? "bg-accent-light text-black font-semibold"
+                                    : "bg-white/20 text-white"
+                                }`}
+                              layout
+                            >
+                              {slideIndex + 1}
+                            </motion.button>
+                          );
+                        })}
+                        {end < slidesCount - 1 && (
+                          <span className="text-white/50 select-none px-1">
+                            ...
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Next */}
+                      <button
+                        onClick={() => swiperRefs.current[index]?.slideNext()}
+                        disabled={
+                          active === slidesCount - 1 || slidesCount === 0
+                        }
+                        className="text-lg px-3 py-1 rounded-full bg-accent/20 text-white hover:bg-accent/40 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                      >
+                        &gt;
+                      </button>
+                    </div>
+                  </div>
 
                   <Swiper
                     key={`swiper-${category}-${swiperKey}`}
-                    modules={[Pagination, Navigation]}
-                    pagination={{
-                      clickable: true,
-                      el: `.swiper-pagination-${index}`,
-                      renderBullet: function (index, className) {
-                        return (
-                          '<span class="' +
-                          className +
-                          '">' +
-                          (index + 1) +
-                          "</span>"
-                        );
-                      }
+                    modules={[Navigation]}
+                    navigation={false}
+                    spaceBetween={30}
+                    slidesPerView={1}
+                    className={`pb-4 ${slidesCount > 1 ? "cursor-grab active:cursor-grabbing" : ""}`}
+                    onSlideChange={(swiper) => {
+                      setActiveIndexes((prev) => ({
+                        ...prev,
+                        [index]: swiper.activeIndex
+                      }));
                     }}
-                    navigation={{
-                      prevEl: ".swiper-button-prev-custom",
-                      nextEl: ".swiper-button-next-custom"
+                    onInit={(swiper) => {
+                      swiperRefs.current[index] = swiper;
+                      setActiveIndexes((prev) => ({ ...prev, [index]: 0 }));
                     }}
-                    className={`pb-4 ${
-                      projects.filter(
-                        (project) => project.category === category
-                      ).length > 1
-                        ? "cursor-grab active:cursor-grabbing"
-                        : ""
-                    }`}
                   >
-                    {projects
-                      .filter((project) => project.category === category)
-                      .map((project) => {
-                        return (
-                          <SwiperSlide key={project.id} className="h-full">
-                            <div className="flex flex-col md:flex-row gap-8 md:gap-12">
-                              {/* Project Info */}
-                              <div className="w-full flex flex-col gap-2 order-2 md:order-none">
-                                {/* Title */}
-                                <h3 className="text-2xl font-medium leading-[1.2]">
-                                  {project.title}
-                                </h3>
-                                {/* Description */}
-                                <p className="text-white/80">
-                                  {project.description}
-                                </p>
-                                {/* Tech */}
-                                <div className="my-2">
-                                  <p className="mb-2">Tech Stack / Skills</p>
-                                  <ul className="flex flex-wrap gap-3">
-                                    {project.tech.map((item, index) => {
-                                      return (
-                                        <li
-                                          key={index}
-                                          className="flex items-center fap-4 bg-[#a8ffcb]/13 h-[28px] px-[14px] rounded-full"
-                                        >
-                                          {item}
-                                        </li>
-                                      );
-                                    })}
-                                  </ul>
-                                </div>
-                                {/* Awards */}
-                                {project.awards &&
-                                  project.awards.length > 0 && (
-                                    <div className="mb-4">
-                                      <p className="mb-2">Awards</p>
-                                      <ul className="list-disc pl-5">
-                                        {project.awards.map((award, index) => (
-                                          <li
-                                            key={index}
-                                            className="text-white/80"
-                                          >
-                                            {award}
-                                          </li>
-                                        ))}
-                                      </ul>
-                                    </div>
-                                  )}
-                                {/* Buttons */}
-                                <div className="mt-2 flex flex-row gap-2">
-                                  {project.link && (
-                                    <Link href={project.link}>
-                                      <button className="btn btn-sm btn-accent flex gap-2">
-                                        <MdArrowOutward className="text-xl" />
-                                        <span>Go to Project</span>
-                                      </button>
-                                    </Link>
-                                  )}
-                                  {project.github && (
-                                    <Link href={project.github}>
-                                      <button className="btn btn-sm btn-white flex gap-2">
-                                        <FaGithub className="text-xl" />
-                                        <span>GitHub Repo</span>
-                                      </button>
-                                    </Link>
-                                  )}
-                                </div>
-                              </div>
-                              {/* Project Image */}
-                              <div className="w-full h-[20vh] md:h-[50vh] relative bg-[#1c1c22] shadow-lg border border-white/5 order-1 md:order-none rounded-lg overflow-hidden">
-                                <Image
-                                  src={project.image}
-                                  alt={project.title}
-                                  fill
-                                  sizes="(max-width: 768px) 100vw, 50vw"
-                                  className="object-contain"
-                                  priority
-                                />
-                              </div>
+                    {slides.map((project) => (
+                      <SwiperSlide key={project.id} className="h-full">
+                        {/* ---- CARD LAYOUT UNCHANGED ---- */}
+                        <div className="flex flex-col md:flex-row gap-8 md:gap-12">
+                          {/* Project Info */}
+                          <div className="w-full flex flex-col gap-2 order-2 md:order-none">
+                            <h3 className="text-2xl font-medium leading-[1.2]">
+                              {project.title}
+                            </h3>
+                            <p className="text-white/80">
+                              {project.description}
+                            </p>
+
+                            <div className="my-2">
+                              <p className="mb-2">Tech Stack / Skills</p>
+                              <ul className="flex flex-wrap gap-3">
+                                {project.tech.map((item, idx) => (
+                                  <li
+                                    key={idx}
+                                    className="flex items-center fap-4 bg-[#a8ffcb]/13 h-[28px] px-[14px] rounded-full"
+                                  >
+                                    {item}
+                                  </li>
+                                ))}
+                              </ul>
                             </div>
-                          </SwiperSlide>
-                        );
-                      })}
+
+                            {project.awards && project.awards.length > 0 && (
+                              <div className="mb-4">
+                                <p className="mb-2">Awards</p>
+                                <ul className="list-disc pl-5">
+                                  {project.awards.map((award, idx) => (
+                                    <li key={idx} className="text-white/80">
+                                      {award}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
+
+                            <div className="mt-2 flex flex-row gap-2">
+                              {project.link && (
+                                <Link href={project.link}>
+                                  <button className="btn btn-sm btn-accent flex gap-2">
+                                    <MdArrowOutward className="text-xl" />
+                                    <span>Go to Project</span>
+                                  </button>
+                                </Link>
+                              )}
+                              {project.github && (
+                                <Link href={project.github}>
+                                  <button className="btn btn-sm btn-white flex gap-2">
+                                    <FaGithub className="text-xl" />
+                                    <span>GitHub Repo</span>
+                                  </button>
+                                </Link>
+                              )}
+                            </div>
+                          </div>
+
+                          {/* Project Image */}
+                          <div className="w-full h-[20vh] md:h-[50vh] relative bg-[#1c1c22] shadow-lg border border-white/5 order-1 md:order-none rounded-lg overflow-hidden">
+                            <Image
+                              src={project.image}
+                              alt={project.title}
+                              fill
+                              sizes="(max-width: 768px) 100vw, 50vw"
+                              className="object-contain"
+                              priority
+                            />
+                          </div>
+                        </div>
+                        {/* ---- END CARD LAYOUT ---- */}
+                      </SwiperSlide>
+                    ))}
                   </Swiper>
                 </TabsContent>
               );
@@ -277,14 +343,27 @@ const Projects = () => {
         </Tabs>
       </div>
 
-      {/* Add global styles for pagination bullets */}
+      {/* Custom Styles (match Experience) */}
       <style jsx global>{`
-        [class*="swiper-pagination-"] {
-          width: 100%;
+        .swiper-pagination {
           display: flex;
+          align-items: center;
           justify-content: center;
-          padding: 0 0;
-          z-index: 10;
+          gap: 0.4rem;
+          transition: all 0.3s ease-in-out;
+        }
+
+        .swiper-pagination-bullet {
+          opacity: 0.6;
+          transform: scale(0.9);
+          transition: all 0.3s ease-in-out;
+        }
+
+        .swiper-pagination-bullet-active {
+          opacity: 1;
+          transform: scale(1.2);
+          font-weight: 600;
+          color: white;
         }
 
         .swiper-pagination-bullet {
@@ -300,6 +379,7 @@ const Projects = () => {
           justify-content: center;
           font-size: 14px;
           color: white;
+          opacity: 1;
         }
 
         .swiper-pagination-bullet-active {
@@ -308,21 +388,22 @@ const Projects = () => {
           font-weight: 600;
         }
 
-        /* Hide default Swiper arrows */
-        .swiper-button-prev,
-        .swiper-button-next {
-          display: none;
+        /* Hide default Swiper arrows on small screens (parity with Experience) */
+        @media (max-width: 640px) {
+          .swiper-button-prev,
+          .swiper-button-next {
+            display: none;
+          }
         }
 
-        /* Hide scrollbar on mobile devices */
+        /* Hide vertical scrollbar on xl- devices */
         @media (max-width: 1279px) {
           .scrollbar {
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
           }
-
           .scrollbar::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Opera */
+            display: none;
           }
         }
       `}</style>
