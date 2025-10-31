@@ -1,13 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation } from "swiper/modules";
+import { Navigation } from "swiper/modules";
 import "swiper/css";
-import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -118,17 +117,44 @@ const experience = [
 
 const categories = ["Work/Internship", "Org Work"];
 
+const MAX_VISIBLE = 5; // max numbered bullets visible
+
 const Experience = () => {
   const [swiperKey, setSwiperKey] = useState(0);
+  // track active slide per category index
+  const [activeIndexes, setActiveIndexes] = useState({});
+  // hold swiper instances per category index
+  const swiperRefs = useRef({});
 
   useEffect(() => {
-    // Wait for Framer Motion animation to complete (2.4s + 0.4s = 2.8s)
     const timer = setTimeout(() => {
-      setSwiperKey(1); // Force Swiper to re-initialize
+      setSwiperKey(1);
     }, 3000);
-
     return () => clearTimeout(timer);
   }, []);
+
+  // helper: compute visible window [start, end] of bullet indices
+  const getVisibleRange = (count, active) => {
+    if (count <= MAX_VISIBLE) return [0, count - 1];
+    let start = active - Math.floor(MAX_VISIBLE / 2);
+    if (start < 0) start = 0;
+    if (start + MAX_VISIBLE - 1 > count - 1) start = count - MAX_VISIBLE;
+    const end = start + MAX_VISIBLE - 1;
+    return [start, end];
+  };
+
+  useEffect(() => {
+    Object.keys(activeIndexes).forEach((i) => {
+      const swiperInstance = document
+        .querySelector(`.swiper-pagination-${i}`)
+        ?.closest(".swiper")?.swiper;
+
+      if (swiperInstance) {
+        swiperInstance.pagination.render();
+        swiperInstance.pagination.update();
+      }
+    });
+  }, [activeIndexes]);
 
   return (
     <motion.section
@@ -140,76 +166,120 @@ const Experience = () => {
       className="min-h-screen flex items-start py-0"
     >
       <div className="container mx-auto w-full h-screen flex flex-col mt-2 2xl:justify-center">
-        {/* Header */}
         <h2 className="h2 mb-2 text-3xl lg:text-4xl font-bold">
           My <span className="text-accent-light">Experience</span>
         </h2>
 
-        {/* Tabs */}
         <Tabs
           defaultValue={categories[0]}
           className="w-full flex flex-col gap-2"
         >
-          {/* Tabs List */}
           <TabsList className="max-h-[80px] flex flex-wrap justify-center items-center gap-4 h-full mb-0">
             {categories.map((category) => (
               <TabsTrigger
                 key={category}
                 value={category}
                 className="capitalize border border-white/10 data-[state=active]:bg-accent 
-                data-[state=active]:border-accent h-[48px] px-6 rounded-full cursor-pointer
-                hover:bg-white/5 transition-all"
+                  data-[state=active]:border-accent h-[48px] px-6 rounded-full cursor-pointer
+                  hover:bg-white/5 transition-all"
               >
                 {category}
               </TabsTrigger>
             ))}
           </TabsList>
 
-          {/* Tabs Content with Scrollable Container */}
           <div className="h-[65vh] scrollbar scrollbar-thumb-accent scrollbar-track-accent/5 overflow-y-scroll xl:overflow-y-visible">
-            {categories.map((category, index) => (
-              <TabsContent key={category} value={category} className="mt-0">
-                {/* Unique pagination per category */}
-                <div
-                  className={`swiper-pagination-${index} flex justify-center items-center gap-4 mb-6`}
-                ></div>
+            {categories.map((category, index) => {
+              const slides = experience.filter(
+                (item) => item.category === category
+              );
+              const slidesCount = slides.length;
+              const active = activeIndexes[index] ?? 0;
+              const [start, end] = getVisibleRange(slidesCount, active);
 
-                <Swiper
-                  key={`swiper-${category}-${swiperKey}`}
-                  modules={[Pagination, Navigation]}
-                  pagination={{
-                    clickable: true,
-                    el: `.swiper-pagination-${index}`,
-                    renderBullet: function (index, className) {
-                      return (
-                        '<span class="' +
-                        className +
-                        '">' +
-                        (index + 1) +
-                        "</span>"
-                      );
-                    }
-                  }}
-                  navigation={{
-                    prevEl: ".swiper-button-prev",
-                    nextEl: ".swiper-button-next"
-                  }}
-                  spaceBetween={30}
-                  slidesPerView={1}
-                  className={`pb-4 ${
-                    experience.filter((item) => item.category === category)
-                      .length > 1
-                      ? "cursor-grab active:cursor-grabbing"
-                      : ""
-                  }`}
-                >
-                  {experience
-                    .filter((item) => item.category === category)
-                    .map((item) => (
+              return (
+                <TabsContent key={category} value={category} className="mt-0">
+                  {/* Pagination row with prev, bullets, next */}
+                  <div className="flex justify-center items-center mb-6">
+                    <div className="flex items-center gap-3">
+                      {/* Prev */}
+                      <button
+                        onClick={() => swiperRefs.current[index]?.slidePrev()}
+                        disabled={active === 0}
+                        className={`text-lg px-3 py-1 rounded-full bg-accent/20 text-white hover:bg-accent/40 transition-all disabled:opacity-40 disabled:cursor-not-allowed`}
+                      >
+                        &lt;
+                      </button>
+
+                      {/* Bullets (custom, React-rendered) */}
+                      <div className="flex items-center justify-center gap-2">
+                        {start > 0 && (
+                          <span className="text-white/50 select-none px-1">
+                            ...
+                          </span>
+                        )}
+                        {Array.from({ length: end - start + 1 }, (_, i) => {
+                          const slideIndex = start + i;
+                          return (
+                            <motion.button
+                              key={slideIndex}
+                              onClick={() =>
+                                swiperRefs.current[index]?.slideTo(slideIndex)
+                              }
+                              className={`w-7 h-7 rounded-full flex items-center justify-center text-sm transition-all
+                                ${
+                                  slideIndex === active
+                                    ? "bg-accent-light text-black font-semibold"
+                                    : "bg-white/20 text-white"
+                                }`}
+                              layout
+                            >
+                              {slideIndex + 1}
+                            </motion.button>
+                          );
+                        })}
+                        {end < slidesCount - 1 && (
+                          <span className="text-white/50 select-none px-1">
+                            ...
+                          </span>
+                        )}
+                      </div>
+
+                      {/* Next */}
+                      <button
+                        onClick={() => swiperRefs.current[index]?.slideNext()}
+                        disabled={
+                          active === slidesCount - 1 || slidesCount === 0
+                        }
+                        className={`text-lg px-3 py-1 rounded-full bg-accent/20 text-white hover:bg-accent/40 transition-all disabled:opacity-40 disabled:cursor-not-allowed`}
+                      >
+                        &gt;
+                      </button>
+                    </div>
+                  </div>
+
+                  <Swiper
+                    key={`swiper-${category}-${swiperKey}`}
+                    modules={[Navigation]}
+                    navigation={false}
+                    spaceBetween={30}
+                    slidesPerView={1}
+                    className={`pb-4 ${slidesCount > 1 ? "cursor-grab active:cursor-grabbing" : ""}`}
+                    onSlideChange={(swiper) => {
+                      setActiveIndexes((prev) => ({
+                        ...prev,
+                        [index]: swiper.activeIndex
+                      }));
+                    }}
+                    onInit={(swiper) => {
+                      swiperRefs.current[index] = swiper;
+                      setActiveIndexes((prev) => ({ ...prev, [index]: 0 }));
+                    }}
+                  >
+                    {slides.map((item) => (
                       <SwiperSlide key={item.id}>
                         <div className="flex items-center justify-center bg-[#1c1c22] rounded-xl p-6 lg:p-7 shadow-lg border border-white/5 overflow-hidden">
                           <div className="flex flex-col lg:flex-row gap-6">
-                            {/* Left Column - Logo */}
                             <div className="lg:w-1/4 lg:flex-col lg:items-center flex justify-center items-start">
                               <div className="w-28 h-28 lg:w-32 lg:h-32 relative rounded-xl overflow-hidden bg-white/5 p-3">
                                 <Image
@@ -221,7 +291,6 @@ const Experience = () => {
                               </div>
                             </div>
 
-                            {/* Right Column - Details */}
                             <div className="lg:w-3/4">
                               <h3 className="text-xl lg:text-2xl font-bold text-white mb-2">
                                 {item.title}
@@ -258,9 +327,9 @@ const Experience = () => {
                                   </div>
 
                                   <div className="flex flex-wrap gap-2">
-                                    {item.tech.map((tech, index) => (
+                                    {item.tech.map((tech, idx) => (
                                       <span
-                                        key={index}
+                                        key={idx}
                                         className="bg-accent/10 text-accent-light px-2.5 py-1 rounded-full text-xs lg:text-sm"
                                       >
                                         {tech}
@@ -274,55 +343,35 @@ const Experience = () => {
                         </div>
                       </SwiperSlide>
                     ))}
-
-                  {/* Custom Navigation */}
-                  <div className="flex justify-between absolute top-1/2 -translate-y-1/2 w-full z-10 px-4">
-                    <button className="swiper-button-prev w-10 h-10 rounded-full bg-accent/20 hover:bg-accent/40 flex items-center justify-center text-white transition-all">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="m15 18-6-6 6-6" />
-                      </svg>
-                    </button>
-                    <button className="swiper-button-next w-10 h-10 rounded-full bg-accent/20 hover:bg-accent/40 flex items-center justify-center text-white transition-all">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="m9 18 6-6-6-6" />
-                      </svg>
-                    </button>
-                  </div>
-                </Swiper>
-              </TabsContent>
-            ))}
+                  </Swiper>
+                </TabsContent>
+              );
+            })}
           </div>
         </Tabs>
       </div>
 
       {/* Custom Styles */}
       <style jsx global>{`
-        [class*="swiper-pagination-"] {
-          width: 100%;
+        .swiper-pagination {
           display: flex;
+          align-items: center;
           justify-content: center;
-          padding: 0;
-          z-index: 10;
+          gap: 0.4rem;
+          transition: all 0.3s ease-in-out;
+        }
+
+        .swiper-pagination-bullet {
+          opacity: 0.6;
+          transform: scale(0.9);
+          transition: all 0.3s ease-in-out;
+        }
+
+        .swiper-pagination-bullet-active {
+          opacity: 1;
+          transform: scale(1.2);
+          font-weight: 600;
+          color: white;
         }
 
         .swiper-pagination-bullet {
@@ -347,17 +396,6 @@ const Experience = () => {
           font-weight: 600;
         }
 
-        .swiper-button-prev,
-        .swiper-button-next {
-          background: none;
-          color: white;
-        }
-
-        .swiper-button-prev:after,
-        .swiper-button-next:after {
-          display: none;
-        }
-
         @media (max-width: 640px) {
           .swiper-button-prev,
           .swiper-button-next {
@@ -365,15 +403,13 @@ const Experience = () => {
           }
         }
 
-        /* Hide scrollbar on mobile devices */
         @media (max-width: 1279px) {
           .scrollbar {
-            scrollbar-width: none; /* Firefox */
-            -ms-overflow-style: none; /* IE and Edge */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
           }
-
           .scrollbar::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Opera */
+            display: none;
           }
         }
       `}</style>
