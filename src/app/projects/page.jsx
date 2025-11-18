@@ -273,19 +273,21 @@ const Projects = () => {
                               {project.description}
                             </p>
 
-                            <div className="my-2">
-                              <p className="mb-2">Tech Stack / Skills</p>
-                              <ul className="flex flex-wrap gap-3">
-                                {project.tech.map((item, idx) => (
-                                  <li
-                                    key={idx}
-                                    className="flex items-center fap-4 bg-[#a8ffcb]/13 h-[28px] px-[14px] rounded-full"
-                                  >
-                                    {item}
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
+                            {project.category !== "Research" && (
+                              <div className="my-2">
+                                <p className="mb-2">Tech Stack / Skills</p>
+                                <ul className="flex flex-wrap gap-3">
+                                  {project.tech.map((item, idx) => (
+                                    <li
+                                      key={idx}
+                                      className="flex items-center fap-4 bg-[#a8ffcb]/13 h-[28px] px-[14px] rounded-full"
+                                    >
+                                      {item}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
 
                             {project.awards && project.awards.length > 0 && (
                               <div className="mb-4">
