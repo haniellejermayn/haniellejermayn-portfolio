@@ -19,13 +19,13 @@ const projects = [
   {
     id: 1,
     category: "Projects",
-    title: "[MOBICOM] Kasama - Household Task Management App (WIP)",
+    title: "[MOBICOM] Kasama - Household Task Management App",
     description:
-      "A Kotlin-based Android application for managing shared chores and notes within households, featuring offline-first architecture with SQLite and Firebase real-time synchronization.",
+      "A Kotlin-based Android application for collaborative household management with multi-user chore tracking, shared notes, and push notifications. Features offline-first architecture with Room for local storage, Firebase for real-time sync, and WorkManager for background synchronization.",
     image: "/assets/projects/kasama.png",
     link: "",
     github: "https://github.com/haniellejermayn/kasama",
-    tech: ["Kotlin", "Android", "SQLite", "Firebase"]
+    tech: ["Kotlin", "Android", "Room", "Firebase", "WorkManager", "MVVM"]
   },
   {
     id: 2,
