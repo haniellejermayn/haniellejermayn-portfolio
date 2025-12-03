@@ -166,27 +166,30 @@ const Experience = () => {
       className="min-h-screen flex items-start py-0"
     >
       <div className="container mx-auto w-full h-screen flex flex-col mt-2 2xl:justify-center">
-        <h2 className="h2 mb-2 text-3xl lg:text-4xl font-bold">
-          My <span className="text-accent-light">Experience</span>
-        </h2>
-
         <Tabs
           defaultValue={categories[0]}
           className="w-full flex flex-col gap-0"
         >
-          <TabsList className="h-auto min-h-[80px] flex flex-wrap justify-center items-center gap-4 mb-0">
-            {categories.map((category) => (
-              <TabsTrigger
-                key={category}
-                value={category}
-                className="capitalize border border-white/10 data-[state=active]:bg-accent 
-                  data-[state=active]:border-accent h-[48px] px-6 rounded-full cursor-pointer
-                  hover:bg-white/5 transition-all"
-              >
-                {category}
-              </TabsTrigger>
-            ))}
-          </TabsList>
+          {/* Title and Tabs Side by Side */}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-2">
+            <h2 className="h2 text-3xl lg:text-4xl font-bold">
+              My <span className="text-accent-light">Experience</span>
+            </h2>
+
+            <TabsList className="h-auto flex flex-wrap justify-center sm:justify-end items-center gap-3">
+              {categories.map((category) => (
+                <TabsTrigger
+                  key={category}
+                  value={category}
+                  className="capitalize border border-white/10 data-[state=active]:bg-accent 
+                    data-[state=active]:border-accent h-[48px] px-6 rounded-full cursor-pointer
+                    hover:bg-white/5 transition-all"
+                >
+                  {category}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </div>
 
           <div className="h-[65vh] scrollbar scrollbar-thumb-accent scrollbar-track-accent/5 overflow-y-scroll xl:overflow-y-visible pb-8 xl:pb-0">
             {categories.map((category, index) => {
