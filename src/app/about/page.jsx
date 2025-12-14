@@ -117,11 +117,12 @@ const About = () => {
               Chua
             </h2>
             <p className="max-w-[540px] mb-12">
-              Full-stack developer with experience building user-friendly
-              frontend interfaces and reliable backend systems. I'm also looking
-              into data science and cloud computing to broaden my skillset. I'm
-              a fast learner and problem solver who enjoys tackling new
-              challenges.
+              Computer Science student passionate about building software. I
+              have experience with full-stack development and am now expanding
+              into DevOps, QA, and software engineering best practices to
+              understand the complete software development lifecycle. I'm a fast
+              learner and problem solver who enjoys tackling new challenges and
+              continuously improving my skillset.
             </p>
             <div className="flex flex-col items-start gap-16">
               {/* NOTE: add Stats Component when impressive */}

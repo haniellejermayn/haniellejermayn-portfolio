@@ -4,7 +4,7 @@ const education = [
     school: "De La Salle University -",
     campus: "Manila",
     degree: "BS Computer Science Major in Software Technology",
-    cgpa: "3.939/4.000 (Summa Cum Laude Standing)",
+    cgpa: "3.947/4.000 (Summa Cum Laude Standing)",
     awards: "Consistent 1st Dean's Lister (6 Terms)"
   },
   {
