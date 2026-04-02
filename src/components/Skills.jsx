@@ -5,8 +5,8 @@ import {
   RiCss3Fill,
   RiTailwindCssFill,
   RiNodejsFill,
-  RiJavaFill,
-  RiAngularjsFill
+  RiJavaFill
+  // RiAngularjsFill
 } from "react-icons/ri";
 import {
   BiLogoJavascript,
@@ -15,7 +15,7 @@ import {
   BiLogoGit,
   BiLogoPython,
   BiLogoMongodb,
-  /*BiLogoAws,*/
+  // BiLogoAws,
   BiLogoSpringBoot,
   BiLogoGithub
 } from "react-icons/bi";
@@ -29,7 +29,8 @@ import {
   SiSupabase,
   SiKotlin,
   SiC,
-  SiExpress
+  SiExpress,
+  SiNestjs
 } from "react-icons/si";
 import { TbSql } from "react-icons/tb";
 import { FaCopyright } from "react-icons/fa";
@@ -47,7 +48,7 @@ const skills = [
     items: [
       { icon: <RiReactjsFill />, name: "React" },
       { icon: <RiNextjsFill />, name: "Next.js" },
-      { icon: <RiAngularjsFill />, name: "Angular" },
+      // { icon: <RiAngularjsFill />, name: "Angular" },
       { icon: <RiTailwindCssFill />, name: "Tailwind CSS" },
       { icon: <RiHtml5Fill />, name: "HTML5" },
       { icon: <RiCss3Fill />, name: "CSS3" }
@@ -57,6 +58,7 @@ const skills = [
     category: "Backend",
     items: [
       { icon: <RiNodejsFill />, name: "Node.js" },
+      { icon: <SiNestjs />, name: "NestJS" },
       { icon: <SiExpress />, name: "Express.js" },
       { icon: <BiLogoSpringBoot />, name: "Spring Boot" },
       { icon: <BiLogoMongodb />, name: "MongoDB" },

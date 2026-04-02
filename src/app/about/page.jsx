@@ -117,12 +117,13 @@ const About = () => {
               Chua
             </h2>
             <p className="max-w-[540px] mb-12">
-              Computer Science student passionate about building software. I
-              have experience with full-stack development and am now expanding
-              into DevOps, QA, and software engineering best practices to
-              understand the complete software development lifecycle. I'm a fast
-              learner and problem solver who enjoys tackling new challenges and
-              continuously improving my skillset.
+              Computer Science student at De La Salle University building real
+              production software. I've shipped full-stack applications across
+              contract management, property management, blockchain, and QA — and
+              I care about the full lifecycle, from clean APIs and maintainable
+              code to CI/CD and reliable deployments. I pick up new tools fast
+              and enjoy working on problems that actually matter to the people
+              using them.
             </p>
             <div className="flex flex-col items-start gap-16">
               {/* NOTE: add Stats Component when impressive */}

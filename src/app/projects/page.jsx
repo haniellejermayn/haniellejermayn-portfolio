@@ -17,9 +17,20 @@ import { FaGithub } from "react-icons/fa";
 
 const projects = [
   {
+    id: 0,
+    category: "Projects",
+    title: "WESM Price Prediction",
+    description:
+      "Comparative ML study predicting Philippine wholesale electricity prices (GWAP), benchmarking Linear Regression, Ridge, Logistic Regression, Neural Network, and LSTM models on real IEMOP market data. Built an end-to-end pipeline from data preprocessing to model evaluation.",
+    image: "/assets/projects/wesm.png",
+    link: "",
+    github: "https://github.com/haniellejermayn/wesm-price-prediction",
+    tech: ["Python", "scikit-learn", "TensorFlow", "Pandas", "Matplotlib"]
+  },
+  {
     id: 1,
     category: "Projects",
-    title: "[MOBICOM] Kasama - Household Task Management App",
+    title: "Kasama - Household Task Management App",
     description:
       "A Kotlin-based Android app for collaborative household management with multi-user chore tracking, shared notes, and push notifications. Features offline-first architecture with Room, Firebase real-time sync, and WorkManager.",
     image: "/assets/projects/kasama.png",
@@ -30,7 +41,7 @@ const projects = [
   {
     id: 2,
     category: "Projects",
-    title: "[STADVDB] IMDb OLAP Data Warehouse",
+    title: "IMDb OLAP Data Warehouse",
     description:
       "A dimensional data warehouse implementing a star schema for IMDb dataset analysis. Built ETL pipelines with Python and Pandas to process 12GB of data. Used a Flask backend with HTML and JavaScript to serve the frontend and implemented OLAP operations for efficient analysis.",
     image: "/assets/projects/imdb.png",
@@ -52,7 +63,7 @@ const projects = [
   {
     id: 4,
     category: "Projects",
-    title: "[CCAPDEV] Connectify - Forum Web Application",
+    title: "Connectify - Forum Web Application",
     description:
       "A forum web application for user interactions and content management, built with Express.js backend and MongoDB database.",
     image: "/assets/projects/connectify.png",
@@ -63,7 +74,7 @@ const projects = [
   {
     id: 5,
     category: "Projects",
-    title: "[CCPROG3] Noir - Hotel Reservation System",
+    title: "Noir - Hotel Reservation System",
     description:
       "A hotel reservation system with graphical user interface (GUI) built using Java and Java Swing.",
     image: "/assets/projects/noir.png",
@@ -74,7 +85,7 @@ const projects = [
   {
     id: 6,
     category: "Projects",
-    title: "[CCINFOM] Volt Vault - Electric Meter Management",
+    title: "Volt Vault - Electric Meter Management",
     description:
       "A database application for electric meter management built with Python Flask backend and MySQL database.",
     image: "/assets/projects/voltvault.png",

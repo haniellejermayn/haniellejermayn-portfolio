@@ -17,13 +17,40 @@ import { BsTools } from "react-icons/bs";
 
 const experience = [
   {
+    id: 0,
+    category: "Work/Internship",
+    title: "Software Engineer Intern",
+    company: "Aboitiz Foods",
+    duration: "February 2026 - April 2026",
+    description: [
+      "Built an enterprise contract management platform (React + NestJS + MySQL) covering the full contract lifecycle — from template generation to execution.",
+      "Designed a scalable MySQL schema to dynamically filter contracts across complex multi-national organizational hierarchies.",
+      "Implemented automated DOCX document processing for uploading and downloading contract templates with field injection.",
+      "Developed a contract review workflow with automated email notifications."
+    ],
+    logo: "/assets/experience/aboitiz-foods.jpg",
+    tech: [
+      "React",
+      "TypeScript",
+      "NestJS",
+      "MySQL",
+      "Node.js",
+      "REST API",
+      "Google Drive API"
+    ]
+  },
+
+  {
     id: 1,
     category: "Work/Internship",
     title: "Product Owner & Technical Lead",
     company: "JJ Apartments (Independent Client Project)",
-    duration: "September 2025 - Present",
-    description:
-      "Led a 7-member Agile team, managing sprints and feature development for a property management application. Built a CI/CD pipeline and deployed Next.js, Spring Boot, and MySQL services across Vercel and Render. Delivered multiple new app features, strengthened authorization, and improved system reliability.",
+    duration: "September 2025 - December 2025",
+    description: [
+      "Led a 7-member Agile team, managing sprints and feature development for a property management application.",
+      "Built a CI/CD pipeline and deployed Next.js, Spring Boot, and MySQL services across Vercel and Render.",
+      "Delivered multiple new app features, strengthened authorization, and improved overall system reliability."
+    ],
     logo: "/assets/experience/jjapartments.jpg",
     tech: [
       "Next.js",
@@ -32,52 +59,60 @@ const experience = [
       "Vercel",
       "Render",
       "GitHub Actions (CI/CD)",
-      "GitHub Projects",
       "Agile"
     ]
   },
+
   {
     id: 2,
     category: "Work/Internship",
     title: "Impact Jobs Intern",
     company: "Aboitiz Foundation Inc.",
     duration: "August 2025 - October 2025",
-    description:
-      "Coordinated beneficiary monitoring and labor market research for 275+ program graduates. Produced impact analysis and evaluator recommendations supporting workforce development initiatives. Designed brochures and handbooks used for program communication and outreach.",
+    description: [
+      "Conducted outreach and data validation for 275+ program graduates to support beneficiary monitoring.",
+      "Performed Excel-based data analysis and labor market research to evaluate program outcomes.",
+      "Developed evidence-based recommendations and presented findings to foundation stakeholders."
+    ],
     logo: "/assets/experience/aboitiz.jpg",
     tech: ["Research", "Data Analysis", "Program Evaluation", "Design"]
   },
+
   {
     id: 3,
     category: "Work/Internship",
     title: "Quality Assurance (QA) & Developer",
     company: "Sharelife Consumers Cooperative",
     duration: "May 2025 - August 2025",
-    description:
-      "Developed 100+ test cases and end-to-end tests using Cypress for DBMS admin application reliability. Fixed critical frontend bugs and implemented features using Next.js, TypeScript, and Supabase. Worked on client project via DLSU collaboration.",
+    description: [
+      "Developed 100+ test cases and end-to-end tests using Cypress, improving DBMS admin application reliability.",
+      "Fixed critical frontend bugs and implemented features using Next.js, TypeScript, and Supabase.",
+      "Authored technical documentation to ensure maintainability and smooth handovers."
+    ],
     logo: "/assets/experience/sharelife.jpg",
     tech: ["Next.js", "TypeScript", "Supabase", "Cypress", "QA Testing"]
   },
+
   {
     id: 4,
     category: "Work/Internship",
     title: "Junior Blockchain Developer",
     company: "Bids n Buys",
     duration: "February 2025 - July 2025",
-    description:
-      "Promoted from intern to junior developer. Built serverless TypeScript APIs on AWS Lambda with MongoDB and Akaunting integration. Managed Cardano node infrastructure via Docker Swarm and developed Merkle-proof verification for on-chain audit data. Prototyped Angular crypto wallet with Jest and Cypress tests.",
+    description: [
+      "Promoted from intern to junior developer based on performance.",
+      "Built serverless TypeScript APIs on AWS Lambda with MongoDB for e-commerce invoicing.",
+      "Managed Cardano node infrastructure via Docker Swarm and built a Merkle-proof verification system for on-chain data integrity."
+    ],
     logo: "/assets/experience/bidsnbuys.jpg",
     tech: [
-      "Angular",
       "TypeScript",
       "AWS Lambda",
       "MongoDB",
       "Cardano",
       "Docker",
-      "Haskell",
       "Jest",
-      "Cypress",
-      "Linux"
+      "Cypress"
     ]
   },
   {
@@ -314,10 +349,26 @@ const Experience = () => {
                                 </div>
                               </div>
 
-                              <div className="mb-4">
-                                <p className="text-white/80 leading-relaxed text-sm lg:text-base">
-                                  {item.description}
-                                </p>
+                              <div className="mb-6 mt-4">
+                                {Array.isArray(item.description) ? (
+                                  <ul className="text-white/80 text-sm lg:text-base space-y-1.5 list-none">
+                                    {item.description.map((point, i) => (
+                                      <li
+                                        key={i}
+                                        className="flex gap-2 leading-relaxed"
+                                      >
+                                        <span className="text-accent-light mt-1 shrink-0">
+                                          ▸
+                                        </span>
+                                        <span>{point}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                ) : (
+                                  <p className="text-white/80 leading-relaxed text-sm lg:text-base">
+                                    {item.description}
+                                  </p>
+                                )}
                               </div>
 
                               {item.tech && item.tech.length > 0 && (
