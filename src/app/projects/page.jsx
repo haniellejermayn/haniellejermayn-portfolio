@@ -41,6 +41,17 @@ const projects = [
   {
     id: 2,
     category: "Projects",
+    title: "IMDb Distributed Database",
+    description:
+      "A distributed database system demonstrating horizontal fragmentation, data replication, concurrency control, and failure recovery across three MySQL nodes. Built with a Python Flask backend and Docker to manage 40,000+ IMDb records.",
+    image: "/assets/projects/imdb-distributed.png", // Make sure to add an image here!
+    link: "",
+    github: "https://github.com/haniellejermayn/imdb-distributed-database",
+    tech: ["MySQL", "Python", "Flask", "Docker", "JavaScript"]
+  },
+  {
+    id: 3,
+    category: "Projects",
     title: "IMDb OLAP Data Warehouse",
     description:
       "A dimensional data warehouse implementing a star schema for IMDb dataset analysis. Built ETL pipelines with Python and Pandas to process 12GB of data. Used a Flask backend with HTML and JavaScript to serve the frontend and implemented OLAP operations for efficient analysis.",
@@ -50,7 +61,7 @@ const projects = [
     tech: ["MySQL", "Python", "Pandas", "Flask", "JavaScript"]
   },
   {
-    id: 3,
+    id: 4,
     category: "Projects",
     title: "Portfolio",
     description:
@@ -61,7 +72,7 @@ const projects = [
     tech: ["React", "Next.js", "Tailwind CSS", "JavaScript"]
   },
   {
-    id: 4,
+    id: 5,
     category: "Projects",
     title: "Connectify - Forum Web Application",
     description:
@@ -72,7 +83,7 @@ const projects = [
     tech: ["Node.js", "Express.js", "MongoDB", "JavaScript", "HTML", "CSS"]
   },
   {
-    id: 5,
+    id: 6,
     category: "Projects",
     title: "Noir - Hotel Reservation System",
     description:
@@ -83,7 +94,7 @@ const projects = [
     tech: ["Java", "Java Swing"]
   },
   {
-    id: 6,
+    id: 7,
     category: "Projects",
     title: "Volt Vault - Electric Meter Management",
     description:
@@ -94,7 +105,7 @@ const projects = [
     tech: ["MySQL", "SQL", "Python", "Flask"]
   },
   {
-    id: 7,
+    id: 8,
     category: "Research",
     title:
       "Reduction of Traffic Congestion in España Boulevard using Graph Theory",

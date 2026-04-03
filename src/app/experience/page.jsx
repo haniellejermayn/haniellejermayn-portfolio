@@ -118,6 +118,29 @@ const experience = [
   {
     id: 5,
     category: "Org Work",
+    title: "Assistant Team Lead, Documentation",
+    company: "Technology Summit 2025",
+    duration: "May 2025 - July 2025",
+    description:
+      "Assisted in leading documentation workflows and cross-team coordination for a large-scale university technology summit.",
+    logo: "/assets/experience/techsummit.jpg",
+    tech: []
+  },
+  {
+    id: 6,
+    category: "Org Work",
+    title: "Assistant Team Lead",
+    company: "UVMW Tech Production Team",
+    duration: "May 2025 - June 2025",
+    description:
+      "Supported technical team coordination and project execution for Animusika, ensuring smooth operational delivery.",
+    logo: "/assets/experience/uvmw.jpg",
+    tech: []
+  },
+
+  {
+    id: 7,
+    category: "Org Work",
     title: "Junior Officer",
     company: "La Salle Computer Society",
     duration: "October 2024 - Present",
