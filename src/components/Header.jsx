@@ -42,7 +42,7 @@ const Header = () => {
               <NavLinks containerStyles="flex flex-col gap-8 max-w-[100px]" />
               <div>
                 <a
-                  href="/assets/Chua Resume.pdf"
+                  href="/assets/HanielleChua_Resume.pdf"
                   download
                   className="btn btn-lg btn-tertiary my-8"
                 >

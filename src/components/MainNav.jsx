@@ -10,7 +10,7 @@ const MainNav = () => {
         <Logo />
         <NavLinks containerStyles="flex flex-col gap-6 w-[100px] mx-auto mb-8" />
         <a
-          href="/assets/Chua Resume.pdf"
+          href="/assets/HanielleChua_Resume.pdf"
           download
           className="btn btn-lg btn-tertiary my-8"
         >

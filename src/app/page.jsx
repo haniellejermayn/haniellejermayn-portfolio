@@ -63,7 +63,7 @@ const Home = () => {
           </a>
            */}
           <a
-            href="/assets/Chua Resume.pdf"
+            href="/assets/HanielleChua_Resume.pdf"
             download
             className="btn btn-lg btn-tertiary mb-10"
           >
