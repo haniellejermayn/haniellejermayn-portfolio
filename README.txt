@@ -2,7 +2,7 @@
 HANIELLE JERMAYN - PERSONAL PORTFOLIO
 ================================================================================
 
-Name: Hanielle Chua
+Name: Hanielle Jermayn E. Chua
 
 Description:
 This repository is my personal portfolio project and is being used as a practice 
