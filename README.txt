@@ -15,7 +15,7 @@ HOW TO RUN THE PROJECT LOCALLY
 This is a Next.js web application. Follow these steps to run it on your computer:
 
 REQUIRED SOFTWARE:
-- Node.js (version 14 or higher)
+- Node.js 18.18 or higher
 - npm (comes with Node.js)
 
 STEP 1: INSTALL DEPENDENCIES
